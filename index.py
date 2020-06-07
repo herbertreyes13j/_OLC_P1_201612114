@@ -19,7 +19,10 @@ window.geometry('1000x800')
 #TextArea
 
 txtarea = scrolledtext.ScrolledText(window)
-txtarea.grid(column=1, row=13)
+txtarea.grid(column=1, row=11)
+
+consola = scrolledtext.ScrolledText(window)
+consola.grid(column=1, row=12)
 
 
 def imprimir(raiz):
@@ -89,12 +92,14 @@ def guardarcomo():
             print(e)
 
 def analizar():
+    consola.insert(INSERT,"")
     input = txtarea.get(1.0,END)
     resultado=g.parse(input)
     print(resultado)
     imprimir(resultado)
     interprete = inter.Interprete()
     interprete.analizar(resultado)
+    consola.insert(INSERT,interprete.codigo)
 
 
 

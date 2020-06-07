@@ -11,6 +11,7 @@ reservadas = {
     'abs':'t_abs',
     'xor':'t_xor',
     'array':'t_array',
+    'if':'t_if'
 }
 
 
@@ -186,6 +187,10 @@ def p_sentencias_sentencias(t):
     t[1].addChilds(t[2])
     t[0]=t[1]
 
+def p_if(t):
+    'IF : t_if par1 exp par2 GOTO'
+    t[0]=nodo.AST_node('IF','IF',2,find_column(input,t.slice[1]))
+    t[0].addChilds(t[3],t[5])
 
 
 def p_sentencias_sentencia(t):
@@ -205,12 +210,14 @@ def p_sentencia(t):
                   | PRINT
                   | EXIT
                   | ASIGNACION_ARR
-                  | as_puntero'''
+                  | as_puntero
+                  | IF'''
     t[0]=t[1]
 
 def p_asignacion_arreglo(t):
-    'ASIGNACION_ARR : asignado L_ACCESOS asignado exp PTCOMA'
-    t[0]=nodo.AST_node('ASIGNACION_ARR','ASIGNACION_ARR',0,find_column(input,t.slice[1]))
+    'ASIGNACION_ARR : asignado L_ACCESOS asigna exp PTCOMA'
+    print('etra')
+    t[0]=nodo.AST_node('ASIGNACION_ARR','ASIGNACION_ARR',0,find_column(input,t.slice[3]))
     t[0].addChilds(t[1],t[2],t[4])
 
 def p_unset(t):
@@ -219,7 +226,7 @@ def p_unset(t):
     t[0].addChilds(t[3])
 
 def p_goto(t):
-    'GOTO : t_goto iden bipunto'
+    'GOTO : t_goto iden PTCOMA'
     t[0]=nodo.AST_node('GOTO','GOTO',1,find_column(input,t.slice[1]))
     t[0].addChilds(nodo.AST_node('iden',t[2],1,find_column(input,t.slice[2])))
 
@@ -247,8 +254,7 @@ def p_aguardar(t):
                   | direccion
                   | parametro
                   | devfunc
-                  | pila
-                  | iden'''
+                  | pila'''
     t[0]=nodo.AST_node(t.slice[1].type,t[1],1,find_column(input,t.slice[1]))
 def p_exp(t):
     '''exp :  exp1 bxor exp1
@@ -285,7 +291,7 @@ def p_exp2_2(t):
 def p_exp3(t):
     '''exp3 :   exp4 igual exp4
             | exp4 diferente  exp4'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
+    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[2]))
     t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
 
 def p_exp3_2(t):
@@ -297,7 +303,7 @@ def p_exp4(t):
             | exp5 mayori exp5
             | exp5 menor exp5
             | exp5 menori  exp5'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
+    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[2]))
     t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
 
 def p_exp4_2(t):
@@ -370,7 +376,6 @@ def p_exp7_2(t):
 
 def p_exp8(t):
     '''exp8 :  string
-              | iden
               | entero
               | decimal
               | temporal

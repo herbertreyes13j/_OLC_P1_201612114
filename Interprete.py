@@ -16,7 +16,7 @@ class Interprete:
         self.primerapasada(raiz)
         print(self.metodos)
         principal=self.buscarmetodo('main')
-        self.interpretar(principal)
+        self.interpretar(principal.cuerpo)
         print(self.codigo)
     def primerapasada(self,raiz):
         for nodo in raiz.childs:
@@ -33,7 +33,10 @@ class Interprete:
             elif nodo.tag=='ASIGNACION':
                 nombre=nodo.childs[0].value
                 tipo=nodo.childs[0].tag
-    
+            elif nodo.tag=='PRINT':
+                opera=op.Operador(self)
+                Resultado=opera.ejecutar(nodo.childs[0])
+                self.codigo+=str(Resultado.valor)+'\n'
     def buscarmetodo(self,nombre):
         for x in self.metodos:
             if(x.nombre.upper()==nombre.upper()):return x
