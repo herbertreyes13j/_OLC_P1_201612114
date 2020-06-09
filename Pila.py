@@ -23,8 +23,9 @@ class Pila:
         if(self.existe(nueva.nombre)):return False
 
         if(self.inicio==None):
+            print('inserta')
             self.inicio=nueva
-            self.fin==nueva
+            self.fin=nueva
         else:
             nueva.anterior=self.fin
             self.fin.siguiente=nueva;
@@ -52,10 +53,39 @@ class Pila:
 
     def obtener(self,nombre):
         actual = self.fin
+
         if (actual==None):return None
-        for x in range(0,self.size):
+        print('no es nulo')
+        while actual!=None:
+            print('entra al ciclo')
             if(actual.nombre.upper()==nombre.upper()):
+                print('Encontro')
                 return actual
             actual=actual.anterior
         return None
+
+    def eliminar(self,nombre):
+        print('nombre para unset')
+        print(nombre)
+        sim=self.obtener(nombre)
+        if(sim==None): return
+        if(self.size==1):
+            self.inicio=None
+            self.size=0
+            return
+        if(self.inicio==sim):
+            self.inicio.siguiente.anterior=None
+            self.inicio=self.inicio.siguiente
+            sim=None
+            return
+        if(self.fin==sim):
+            self.fin=self.fin.anterior
+            self.fin.siguiente=None
+            sim=None
+            return
+        
+        sim.siguiente.anterior=sim.anterior
+        sim.anterior.siguiente=sim.siguiente
+        sim=None
+            
 

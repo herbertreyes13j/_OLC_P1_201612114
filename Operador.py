@@ -23,16 +23,36 @@ class Operador:
                     return self.division(Resultado1,Resultado2,fila,columna)
                 elif op=="%":
                     return self.modulo(Resultado1,Resultado2,fila,columna)
+                elif op=="!=" or op=="==" or op==">" or op=="<" or op==">=" or op=="<=":
+                    return self.relacionales(Resultado1,Resultado2,fila,columna,op)
+                elif op== "&" or op=='|' or op=='^' or op=='<<' or op=='>>':
+                    return self.bitabit(Resultado1,Resultado2,fila,columna,op)
+                elif op=='&&' or op=='||' or op=='xor':
+                    return self.logicas(Resultado1,Resultado2,fila,columna,op)
             elif(len(raiz.childs)==2):
                 print('Hello')
             else:
                 return self.ejecutar(raiz.childs[0])
 
-        elif raiz.tag=="iden" or raiz.tag=="temporal":
+        elif raiz.tag=="temporal" or raiz.tag=='direccion' or raiz.tag=='parametro' or raiz.tag=='devfunc' or raiz.tag=='pila':
+            print('el valor enciclado')
+            print(raiz.value)
             s = self.interprete.pila.obtener(raiz.value)
+            if(s!=None):
+                return res.Resultado(s.tipo,s.valor)
+            else:
+                print('variable no encontrada')
         elif raiz.tag=="entero":
             print('entero sirve')
             return res.Resultado("int",raiz.value)
+        elif raiz.tag=='decimal':
+            return res.Resultado("float",raiz.value)
+        elif raiz.tag=='string':
+            return res.Resultado("string",raiz.value)
+        elif raiz.tag=='CASTEO':
+            tipo=raiz.childs[0].value.lower()
+            
+
         else:
             return res.Resultado("d","")
 
@@ -118,17 +138,106 @@ class Operador:
             Resultado.tipo="error"
             return Resultado
     
-    def modulo(self,Resultado1,Resultado2,fila,columna):
+    def relacionales(self,Resultado1,Resultado2,fila,columna,op):
         if(Resultado1.tipo=="error" or Resultado2.tipo=="error"): return res.Resultado("error","")
         Resultado=res.Resultado("","")
         tipo1=Resultado1.tipo
         tipo2=Resultado2.tipo
 
-        if  (tipo1=="int" or tipo1=="float") and (tipo2=="float" or tipo2=="int"):
-            Resultado.valor=float(Resultado1.valor)%float(Resultado2.valor)
-            Resultado.tipo="float"
+        if ((tipo1=="int" or tipo1=="float") and tipo2=="string") or (tipo1=='string' and (tipo2=='int' or tipo2=='float')):
+            Resultado.valor=1
+            Resultado.tipo='int'
+            return Resultado
+
+        elif (tipo1=="int" or tipo1=="float") and (tipo2=="float" or tipo2=="int"):
+            resu=0
+            if op=='==':
+                resu=float(Resultado1.valor)==float(Resultado2.valor)
+            elif op=='!=':
+                resu=float(Resultado1.valor)!=float(Resultado2.valor)
+            elif op=='>':
+                resu=float(Resultado1.valor)>float(Resultado2.valor)
+            elif op=='<':
+                resu=float(Resultado1.valor)<float(Resultado2.valor)
+            elif op=='>=':
+                resu=float(Resultado1.valor)>=float(Resultado2.valor)
+            elif op=='<=':
+                resu=float(Resultado1.valor)<=float(Resultado2.valor)
+            
+            if(resu):
+                Resultado.valor=1
+            else:
+                Resultado.valor=0
+            
+            Resultado.tipo="int"
+            return Resultado
+        elif tipo1=="string" and tipo2=="string":
+            resu=0
+            resu=str(Resultado1.valor)==str(Resultado2.valor)
+            if(resu):
+                Resultado.valor=1
+            else:
+                Resultado.valor=0
+            Resultado.tipo="int"
             return Resultado
         else:
-            self.interprete.errores.insertar(N_Error.N_Error("Semantico","No es posible division entre: "+tipo1+' y '+tipo2,fila,columna))
+            self.interprete.errores.insertar(N_Error.N_Error("Semantico","No es posible "+op+" entre: "+tipo1+' y '+tipo2,fila,columna))
+            Resultado.tipo="error"
+            return Resultado
+
+    def logicas(self,Resultado1,Resultado2,fila,columna,op):
+        if(Resultado1.tipo=="error" or Resultado2.tipo=="error"): return res.Resultado("error","")
+        Resultado=res.Resultado("","")
+        tipo1=Resultado1.tipo
+        tipo2=Resultado2.tipo
+
+        if (tipo1=="int" or tipo1=="float") and (tipo2=="float" or tipo2=="int"):
+            resu=0
+            if(float(Resultado1.valor)!=0):Resultado1.valor=True
+            else: Resultado1.valor=False
+            if(float(Resultado2.valor)!=0):Resultado2.valor=True
+            else: Resultado2.valor=False
+            if op=='&&':
+                resu=Resultado1.valor and Resultado2.valor
+            elif op=='||':
+                resu=Resultado1.valor or Resultado2.valor
+            elif op=='xor':
+                resu=Resultado1.valor^Resultado2.valor
+            if(resu):
+                Resultado.valor=1
+            else:
+                Resultado.valor=0
+            
+            Resultado.tipo="int"
+            return Resultado
+
+        else:
+            self.interprete.errores.insertar(N_Error.N_Error("Semantico","No es posible "+op+" entre: "+tipo1+' y '+tipo2,fila,columna))
+            Resultado.tipo="error"
+            return Resultado
+    def bitabit(self,Resultado1,Resultado2,fila,columna,op):
+        if(Resultado1.tipo=="error" or Resultado2.tipo=="error"): return res.Resultado("error","")
+        Resultado=res.Resultado("","")
+        tipo1=Resultado1.tipo
+        tipo2=Resultado2.tipo
+
+        if tipo1=="int"  and tipo2=="int":
+            resu=0
+            if op=='&':
+                resu=int(Resultado1.valor) & int(Resultado2.valor)
+            elif op=='|':
+                resu=int(Resultado1.valor) | int(Resultado2.valor)
+            elif op=='^':
+                resu=int(Resultado1.valor) ^ int(Resultado2.valor)
+            elif op=='<<':
+                resu=int(Resultado1.valor) << int(Resultado2.valor)
+            elif op=='>>':
+                resu=int(Resultado1.valor) >> int(Resultado2.valor)    
+            Resultado.valor=resu
+            Resultado.tipo="int"
+            return Resultado
+
+        else:
+            self.interprete.errores.insertar(N_Error.N_Error("Semantico","No es posible "+op+" entre: "+tipo1+' y '+tipo2,fila,columna))
             Resultado.tipo="error"
             return Resultado

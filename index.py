@@ -92,7 +92,7 @@ def guardarcomo():
             print(e)
 
 def analizar():
-    consola.insert(INSERT,"")
+    consola.delete('1.0',END)
     input = txtarea.get(1.0,END)
     resultado=g.parse(input)
     print(resultado)

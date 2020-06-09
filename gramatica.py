@@ -271,7 +271,7 @@ def p_exp1(t):
             | exp2 or  exp2
             | exp2 shiftizq exp2
             | exp2 shiftder exp2'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
+    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[2]))
     t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
 
 def p_exp1_2(t):

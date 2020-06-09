@@ -11,6 +11,7 @@ class Interprete:
         self.pila=pi.Pila()
         self.codigo=""
         self.errores=L_Error.L_Error()
+        self.continuar=True
     
     def analizar(self,raiz):
         self.primerapasada(raiz)
@@ -27,16 +28,50 @@ class Interprete:
                 self.metodos.append(metodo)
 
     def interpretar(self,raiz):
-        for nodo in raiz.childs:
-            if(nodo.tag=='SENTENCIAS'):
-                self.interpretar(nodo)
-            elif nodo.tag=='ASIGNACION':
-                nombre=nodo.childs[0].value
-                tipo=nodo.childs[0].tag
-            elif nodo.tag=='PRINT':
+        if self.continuar:
+            if raiz.tag == 'SENTENCIAS':
+                for nodo in raiz.childs:
+                    self.interpretar(nodo)
+            elif raiz.tag == 'ASIGNACION':
+                nombre=raiz.childs[0].value
+                tipo=raiz.childs[0].tag
+                opera = op.Operador(self)
+                print('voy a asignar')
+                print(nombre)
+                Resultado = opera.ejecutar(raiz.childs[1])
+                s = self.pila.obtener(nombre)
+                if s == None:
+                    s = sim.Simbolo(nombre,Resultado.tipo,Resultado.valor,tipo)
+                    self.pila.push(s)
+                else:
+                    s.tipo=Resultado.tipo
+                    s.valor=Resultado.valor
+            elif raiz.tag=='PRINT':
                 opera=op.Operador(self)
-                Resultado=opera.ejecutar(nodo.childs[0])
+                Resultado=opera.ejecutar(raiz.childs[0])
                 self.codigo+=str(Resultado.valor)+'\n'
+            elif raiz.tag=='UNSET':
+                print('usnet')
+                print(raiz.childs[0].value)
+                self.pila.eliminar(raiz.childs[0].value)
+
+            elif raiz.tag=='GOTO':
+                metodo=self.buscarmetodo(raiz.childs[0].value)
+                if(metodo!=None):
+                    self.interpretar(metodo.cuerpo)
+                else:
+                    print('metodo no encontrado')
+            elif raiz.tag=='IF':
+                opera=op.Operador(self)
+                Resultado=opera.ejecutar(raiz.childs[0])
+                if(Resultado.tipo=='int'):
+                    if(int(Resultado.valor)!=0):
+                        self.interpretar(raiz.childs[1])
+            elif raiz.tag=='EXIT':
+                self.continuar=False
+        else:
+            return      
+
     def buscarmetodo(self,nombre):
         for x in self.metodos:
             if(x.nombre.upper()==nombre.upper()):return x
