@@ -47,6 +47,7 @@ tokens=[
     'decimal',
     'entero',
     'string',
+    'string2',
     'temporal',
     'parametro',
     'devfunc',
@@ -113,6 +114,11 @@ def t_string(t):
     r'\'.*?\''
     t.value = t.value[1:-1] # remuevo las comillas
     return t 
+
+def t_string2(t):
+    r'\".*?\"'
+    t.value = t.value[1:-1] # remuevo las comillas
+    return t
 
 def t_puntero(t):
     r"\$sp"
@@ -235,6 +241,12 @@ def p_print(t):
     t[0]=nodo.AST_node('PRINT','PRINT',0,find_column(input,t.slice[1]))
     t[0].addChilds(t[3])  
 
+def p_print_error(t):
+    'PRINT : t_print par1 exp par2 error'
+    print('falta punto y coma')
+    t[0]=nodo.AST_node('PRINT','PRINT',0,find_column(input,t.slice[1]))
+    t[0].addChilds(t[3])
+
 def p_asignacion(t):
     'asignacion : asignado asigna exp PTCOMA'
     t[0]= nodo.AST_node('ASIGNACION','ASIGNACION',2,find_column(input,t.slice[2]))
@@ -344,14 +356,13 @@ def p_exp7(t):
             | not exp11
             | bnot exp11'''
     t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
-    t[0].addChilds(nodo.AST_node('op',t[1],1,find_column(input,t.slice[2])),t[2]) 
+    t[0].addChilds(nodo.AST_node('op',t[1],1,find_column(input,t.slice[1])),t[2])
 
 def p_acceso_arr(t):
     'exp11 : asignado L_ACCESOS'
-    t[0]= nodo.AST_node('EXP','EXP',3,0)
     aux =nodo.AST_node('ACCESO_ARR','ACCESO_ARR',1,3)
     aux.addChilds(t[1],t[2])
-    t[0].addChilds(aux)
+    t[0]=aux
 
 def p_L_ACCESOS(t):
     'L_ACCESOS : L_ACCESOS acceso'
@@ -376,6 +387,7 @@ def p_exp7_2(t):
 
 def p_exp8(t):
     '''exp8 :  string
+              | string2
               | entero
               | decimal
               | temporal
@@ -384,8 +396,7 @@ def p_exp8(t):
               | parametro
               | devfunc
               | pila'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
-    t[0].addChilds(nodo.AST_node(t.slice[1].type,t.slice[1].value,1,find_column(input,t.slice[1]))) 
+    t[0]=nodo.AST_node(t.slice[1].type,t.slice[1].value,1,find_column(input,t.slice[1]))
 
 
 
@@ -405,9 +416,23 @@ def p_read(t):
     t[0].addChilds(aux) 
 
 
+def p_array(t):
+    'exp8 : t_array par1 par2'
+    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
+    aux = nodo.AST_node('ARRAY','ARRAY',3,find_column(input,t.slice[1]))
+    t[0].addChilds(aux)
+
 def p_error(t):
     print(t)
     print("Error sintáctico en '%s'" % t.value)
+
+def t_eof(t):
+     # Get more input (Example)
+    more = input('main:')
+    if more:
+        lexer.input(more)
+        return lexer.token()
+    return None
 
 import ply.yacc as yacc
 parser = yacc.yacc()

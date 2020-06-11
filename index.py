@@ -8,6 +8,13 @@ import gramatica as g
 import AST_Node as nodo
 import graphviz
 import Interprete as inter
+import sys
+import threading
+from tkinter import simpledialog
+sys.setrecursionlimit(600000)
+print(sys.getrecursionlimit())
+threading.stack_size(250000000)
+
 archivoactgual="v"
 
 #creacion de ventana
@@ -92,14 +99,22 @@ def guardarcomo():
             print(e)
 
 def analizar():
+    answer = simpledialog.askstring("Input", "What is your first name?",
+                                    parent=window)
+    print(answer.isnumeric())
     consola.delete('1.0',END)
     input = txtarea.get(1.0,END)
     resultado=g.parse(input)
-    print(resultado)
-    imprimir(resultado)
+    #print(resultado)
+    #imprimir(resultado)
     interprete = inter.Interprete()
-    interprete.analizar(resultado)
+    #interprete.analizar(resultado)
+
+    thread = threading.Thread(target=interprete.analizar,args=(resultado,))
+    thread.start()
+    thread.join()
     consola.insert(INSERT,interprete.codigo)
+
 
 
 
@@ -121,5 +136,6 @@ menubar.add_cascade(label="Archivo",menu=archivo)
 
 btn = Button(window, text="Ejecutar", command=analizar)
 btn.grid(column=1, row=8)
+
 
 window.mainloop()

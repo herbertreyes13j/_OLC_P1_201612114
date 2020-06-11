@@ -10,226 +10,432 @@ digraph {
 	Node2 -> Node4
 	Node5 [label="ASIGNACION | ASIGNACION"]
 	Node4 -> Node5
-	Node6 [label="parametro | $a0"]
+	Node6 [label="pila | $s0"]
 	Node5 -> Node6
 	Node7 [label="EXP | EXP"]
 	Node5 -> Node7
-	Node8 [label="entero | 25"]
+	Node8 [label="ARRAY | ARRAY"]
 	Node7 -> Node8
 	Node9 [label="ASIGNACION | ASIGNACION"]
 	Node4 -> Node9
-	Node10 [label="direccion | $ra"]
+	Node10 [label="puntero | $sp"]
 	Node9 -> Node10
 	Node11 [label="EXP | EXP"]
 	Node9 -> Node11
-	Node12 [label="entero | 0"]
+	Node12 [label="op | -"]
 	Node11 -> Node12
-	Node13 [label="GOTO | GOTO"]
-	Node4 -> Node13
-	Node14 [label="iden | fact"]
+	Node13 [label="EXP | EXP"]
+	Node11 -> Node13
+	Node14 [label="entero | 1"]
 	Node13 -> Node14
-	Node15 [label="ETIQUETA | ETIQUETA"]
-	Node1 -> Node15
-	Node16 [label="iden | ret0"]
+	Node15 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node15
+	Node16 [label="parametro | $a0"]
 	Node15 -> Node16
-	Node17 [label="SENTENCIAS | SENTENCIAS"]
+	Node17 [label="EXP | EXP"]
 	Node15 -> Node17
-	Node18 [label="PRINT | PRINT"]
+	Node18 [label="entero | 3"]
 	Node17 -> Node18
-	Node19 [label="EXP | EXP"]
-	Node18 -> Node19
-	Node20 [label="devfunc | $v0"]
+	Node19 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node19
+	Node20 [label="parametro | $a1"]
 	Node19 -> Node20
-	Node21 [label="EXIT | EXIT"]
-	Node17 -> Node21
-	Node22 [label="ETIQUETA | ETIQUETA"]
-	Node1 -> Node22
-	Node23 [label="iden | fact"]
-	Node22 -> Node23
-	Node24 [label="SENTENCIAS | SENTENCIAS"]
-	Node22 -> Node24
-	Node25 [label="IF | IF"]
-	Node24 -> Node25
+	Node21 [label="EXP | EXP"]
+	Node19 -> Node21
+	Node22 [label="entero | 2"]
+	Node21 -> Node22
+	Node23 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node23
+	Node24 [label="puntero | $sp"]
+	Node23 -> Node24
+	Node25 [label="EXP | EXP"]
+	Node23 -> Node25
 	Node26 [label="EXP | EXP"]
 	Node25 -> Node26
-	Node27 [label="EXP | EXP"]
+	Node27 [label="puntero | $sp"]
 	Node26 -> Node27
-	Node28 [label="parametro | $a0"]
-	Node27 -> Node28
-	Node29 [label="op | >"]
-	Node26 -> Node29
-	Node30 [label="EXP | EXP"]
-	Node26 -> Node30
-	Node31 [label="entero | 1"]
-	Node30 -> Node31
-	Node32 [label="GOTO | GOTO"]
-	Node25 -> Node32
-	Node33 [label="iden | sino"]
-	Node32 -> Node33
-	Node34 [label="ASIGNACION | ASIGNACION"]
-	Node24 -> Node34
-	Node35 [label="devfunc | $v0"]
+	Node28 [label="op | +"]
+	Node25 -> Node28
+	Node29 [label="EXP | EXP"]
+	Node25 -> Node29
+	Node30 [label="entero | 1"]
+	Node29 -> Node30
+	Node31 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node31
+	Node32 [label="pila | $s0"]
+	Node31 -> Node32
+	Node33 [label="L_ACCESOS | L_ACCESOS"]
+	Node31 -> Node33
+	Node34 [label="ACCESO | ACCESO"]
+	Node33 -> Node34
+	Node35 [label="EXP | EXP"]
 	Node34 -> Node35
-	Node36 [label="EXP | EXP"]
-	Node34 -> Node36
-	Node37 [label="entero | 1"]
-	Node36 -> Node37
-	Node38 [label="EXIT | EXIT"]
-	Node24 -> Node38
-	Node39 [label="IF | IF"]
-	Node24 -> Node39
-	Node40 [label="EXP | EXP"]
+	Node36 [label="puntero | $sp"]
+	Node35 -> Node36
+	Node37 [label="EXP | EXP"]
+	Node31 -> Node37
+	Node38 [label="parametro | $a0"]
+	Node37 -> Node38
+	Node39 [label="GOTO | GOTO"]
+	Node4 -> Node39
+	Node40 [label="iden | ack"]
 	Node39 -> Node40
-	Node41 [label="EXP | EXP"]
-	Node40 -> Node41
-	Node42 [label="direccion | $ra"]
+	Node41 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node41
+	Node42 [label="iden | ret0"]
 	Node41 -> Node42
-	Node43 [label="op | =="]
-	Node40 -> Node43
-	Node44 [label="EXP | EXP"]
-	Node40 -> Node44
-	Node45 [label="entero | 0"]
+	Node43 [label="SENTENCIAS | SENTENCIAS"]
+	Node41 -> Node43
+	Node44 [label="PRINT | PRINT"]
+	Node43 -> Node44
+	Node45 [label="EXP | EXP"]
 	Node44 -> Node45
-	Node46 [label="GOTO | GOTO"]
-	Node39 -> Node46
-	Node47 [label="iden | ret0"]
-	Node46 -> Node47
-	Node48 [label="ASIGNACION | ASIGNACION"]
-	Node24 -> Node48
-	Node49 [label="direccion | $ra"]
+	Node46 [label="devfunc | $v0"]
+	Node45 -> Node46
+	Node47 [label="EXIT | EXIT"]
+	Node43 -> Node47
+	Node48 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node48
+	Node49 [label="iden | ack"]
 	Node48 -> Node49
-	Node50 [label="EXP | EXP"]
+	Node50 [label="SENTENCIAS | SENTENCIAS"]
 	Node48 -> Node50
-	Node51 [label="EXP | EXP"]
+	Node51 [label="IF | IF"]
 	Node50 -> Node51
-	Node52 [label="direccion | $ra"]
+	Node52 [label="EXP | EXP"]
 	Node51 -> Node52
-	Node53 [label="op | -"]
-	Node50 -> Node53
-	Node54 [label="EXP | EXP"]
-	Node50 -> Node54
-	Node55 [label="entero | 1"]
-	Node54 -> Node55
-	Node56 [label="GOTO | GOTO"]
-	Node24 -> Node56
-	Node57 [label="iden | ret1"]
+	Node53 [label="EXP | EXP"]
+	Node52 -> Node53
+	Node54 [label="puntero | $sp"]
+	Node53 -> Node54
+	Node55 [label="op | <"]
+	Node52 -> Node55
+	Node56 [label="EXP | EXP"]
+	Node52 -> Node56
+	Node57 [label="entero | 0"]
 	Node56 -> Node57
-	Node58 [label="ETIQUETA | ETIQUETA"]
-	Node1 -> Node58
-	Node59 [label="iden | sino"]
+	Node58 [label="GOTO | GOTO"]
+	Node51 -> Node58
+	Node59 [label="iden | ret3"]
 	Node58 -> Node59
-	Node60 [label="SENTENCIAS | SENTENCIAS"]
-	Node58 -> Node60
-	Node61 [label="ASIGNACION | ASIGNACION"]
+	Node60 [label="ASIGNACION | ASIGNACION"]
+	Node50 -> Node60
+	Node61 [label="parametro | $a0"]
 	Node60 -> Node61
-	Node62 [label="parametro | $a0"]
-	Node61 -> Node62
-	Node63 [label="EXP | EXP"]
-	Node61 -> Node63
-	Node64 [label="EXP | EXP"]
+	Node62 [label="EXP | EXP"]
+	Node60 -> Node62
+	Node63 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node62 -> Node63
+	Node64 [label="pila | $s0"]
 	Node63 -> Node64
-	Node65 [label="parametro | $a0"]
-	Node64 -> Node65
-	Node66 [label="op | -"]
-	Node63 -> Node66
+	Node65 [label="L_ACCESOS | L_ACCESOS"]
+	Node63 -> Node65
+	Node66 [label="ACCESO | ACCESO"]
+	Node65 -> Node66
 	Node67 [label="EXP | EXP"]
-	Node63 -> Node67
-	Node68 [label="entero | 1"]
+	Node66 -> Node67
+	Node68 [label="puntero | $sp"]
 	Node67 -> Node68
 	Node69 [label="ASIGNACION | ASIGNACION"]
-	Node60 -> Node69
-	Node70 [label="direccion | $ra"]
+	Node50 -> Node69
+	Node70 [label="puntero | $sp"]
 	Node69 -> Node70
 	Node71 [label="EXP | EXP"]
 	Node69 -> Node71
 	Node72 [label="EXP | EXP"]
 	Node71 -> Node72
-	Node73 [label="direccion | $ra"]
+	Node73 [label="puntero | $sp"]
 	Node72 -> Node73
-	Node74 [label="op | +"]
+	Node74 [label="op | -"]
 	Node71 -> Node74
 	Node75 [label="EXP | EXP"]
 	Node71 -> Node75
 	Node76 [label="entero | 1"]
 	Node75 -> Node76
-	Node77 [label="GOTO | GOTO"]
-	Node60 -> Node77
-	Node78 [label="iden | fact"]
+	Node77 [label="IF | IF"]
+	Node50 -> Node77
+	Node78 [label="EXP | EXP"]
 	Node77 -> Node78
-	Node79 [label="ETIQUETA | ETIQUETA"]
-	Node1 -> Node79
-	Node80 [label="iden | ret1"]
+	Node79 [label="EXP | EXP"]
+	Node78 -> Node79
+	Node80 [label="parametro | $a0"]
 	Node79 -> Node80
-	Node81 [label="SENTENCIAS | SENTENCIAS"]
-	Node79 -> Node81
-	Node82 [label="ASIGNACION | ASIGNACION"]
-	Node81 -> Node82
-	Node83 [label="parametro | $a0"]
+	Node81 [label="op | !="]
+	Node78 -> Node81
+	Node82 [label="EXP | EXP"]
+	Node78 -> Node82
+	Node83 [label="entero | 0"]
 	Node82 -> Node83
-	Node84 [label="EXP | EXP"]
-	Node82 -> Node84
-	Node85 [label="EXP | EXP"]
+	Node84 [label="GOTO | GOTO"]
+	Node77 -> Node84
+	Node85 [label="iden | ret1"]
 	Node84 -> Node85
-	Node86 [label="parametro | $a0"]
-	Node85 -> Node86
-	Node87 [label="op | +"]
-	Node84 -> Node87
+	Node86 [label="ASIGNACION | ASIGNACION"]
+	Node50 -> Node86
+	Node87 [label="temporal | $t4"]
+	Node86 -> Node87
 	Node88 [label="EXP | EXP"]
-	Node84 -> Node88
-	Node89 [label="entero | 1"]
+	Node86 -> Node88
+	Node89 [label="EXP | EXP"]
 	Node88 -> Node89
-	Node90 [label="ASIGNACION | ASIGNACION"]
-	Node81 -> Node90
-	Node91 [label="devfunc | $v0"]
-	Node90 -> Node91
+	Node90 [label="parametro | $a0"]
+	Node89 -> Node90
+	Node91 [label="op | +"]
+	Node88 -> Node91
 	Node92 [label="EXP | EXP"]
-	Node90 -> Node92
-	Node93 [label="EXP | EXP"]
+	Node88 -> Node92
+	Node93 [label="entero | 1"]
 	Node92 -> Node93
-	Node94 [label="parametro | $a0"]
-	Node93 -> Node94
-	Node95 [label="op | *"]
-	Node92 -> Node95
+	Node94 [label="ASIGNACION | ASIGNACION"]
+	Node50 -> Node94
+	Node95 [label="parametro | $a1"]
+	Node94 -> Node95
 	Node96 [label="EXP | EXP"]
-	Node92 -> Node96
-	Node97 [label="devfunc | $v0"]
+	Node94 -> Node96
+	Node97 [label="EXP | EXP"]
 	Node96 -> Node97
-	Node98 [label="IF | IF"]
-	Node81 -> Node98
-	Node99 [label="EXP | EXP"]
-	Node98 -> Node99
+	Node98 [label="parametro | $a1"]
+	Node97 -> Node98
+	Node99 [label="op | +"]
+	Node96 -> Node99
 	Node100 [label="EXP | EXP"]
-	Node99 -> Node100
-	Node101 [label="direccion | $ra"]
+	Node96 -> Node100
+	Node101 [label="temporal | $t4"]
 	Node100 -> Node101
-	Node102 [label="op | =="]
-	Node99 -> Node102
-	Node103 [label="EXP | EXP"]
-	Node99 -> Node103
-	Node104 [label="entero | 0"]
-	Node103 -> Node104
-	Node105 [label="GOTO | GOTO"]
-	Node98 -> Node105
-	Node106 [label="iden | ret0"]
-	Node105 -> Node106
-	Node107 [label="ASIGNACION | ASIGNACION"]
-	Node81 -> Node107
-	Node108 [label="direccion | $ra"]
+	Node102 [label="GOTO | GOTO"]
+	Node50 -> Node102
+	Node103 [label="iden | ack"]
+	Node102 -> Node103
+	Node104 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node104
+	Node105 [label="iden | ret1"]
+	Node104 -> Node105
+	Node106 [label="SENTENCIAS | SENTENCIAS"]
+	Node104 -> Node106
+	Node107 [label="IF | IF"]
+	Node106 -> Node107
+	Node108 [label="EXP | EXP"]
 	Node107 -> Node108
 	Node109 [label="EXP | EXP"]
-	Node107 -> Node109
-	Node110 [label="EXP | EXP"]
+	Node108 -> Node109
+	Node110 [label="parametro | $a1"]
 	Node109 -> Node110
-	Node111 [label="direccion | $ra"]
-	Node110 -> Node111
-	Node112 [label="op | -"]
-	Node109 -> Node112
-	Node113 [label="EXP | EXP"]
-	Node109 -> Node113
-	Node114 [label="entero | 1"]
-	Node113 -> Node114
-	Node115 [label="GOTO | GOTO"]
-	Node81 -> Node115
-	Node116 [label="iden | ret1"]
-	Node115 -> Node116
+	Node111 [label="op | !="]
+	Node108 -> Node111
+	Node112 [label="EXP | EXP"]
+	Node108 -> Node112
+	Node113 [label="entero | 0"]
+	Node112 -> Node113
+	Node114 [label="GOTO | GOTO"]
+	Node107 -> Node114
+	Node115 [label="iden | ret2"]
+	Node114 -> Node115
+	Node116 [label="ASIGNACION | ASIGNACION"]
+	Node106 -> Node116
+	Node117 [label="parametro | $a1"]
+	Node116 -> Node117
+	Node118 [label="EXP | EXP"]
+	Node116 -> Node118
+	Node119 [label="EXP | EXP"]
+	Node118 -> Node119
+	Node120 [label="parametro | $a1"]
+	Node119 -> Node120
+	Node121 [label="op | +"]
+	Node118 -> Node121
+	Node122 [label="EXP | EXP"]
+	Node118 -> Node122
+	Node123 [label="entero | 1"]
+	Node122 -> Node123
+	Node124 [label="ASIGNACION | ASIGNACION"]
+	Node106 -> Node124
+	Node125 [label="parametro | $a0"]
+	Node124 -> Node125
+	Node126 [label="EXP | EXP"]
+	Node124 -> Node126
+	Node127 [label="EXP | EXP"]
+	Node126 -> Node127
+	Node128 [label="parametro | $a0"]
+	Node127 -> Node128
+	Node129 [label="op | -"]
+	Node126 -> Node129
+	Node130 [label="EXP | EXP"]
+	Node126 -> Node130
+	Node131 [label="entero | 1"]
+	Node130 -> Node131
+	Node132 [label="ASIGNACION | ASIGNACION"]
+	Node106 -> Node132
+	Node133 [label="puntero | $sp"]
+	Node132 -> Node133
+	Node134 [label="EXP | EXP"]
+	Node132 -> Node134
+	Node135 [label="EXP | EXP"]
+	Node134 -> Node135
+	Node136 [label="puntero | $sp"]
+	Node135 -> Node136
+	Node137 [label="op | +"]
+	Node134 -> Node137
+	Node138 [label="EXP | EXP"]
+	Node134 -> Node138
+	Node139 [label="entero | 1"]
+	Node138 -> Node139
+	Node140 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node106 -> Node140
+	Node141 [label="pila | $s0"]
+	Node140 -> Node141
+	Node142 [label="L_ACCESOS | L_ACCESOS"]
+	Node140 -> Node142
+	Node143 [label="ACCESO | ACCESO"]
+	Node142 -> Node143
+	Node144 [label="EXP | EXP"]
+	Node143 -> Node144
+	Node145 [label="puntero | $sp"]
+	Node144 -> Node145
+	Node146 [label="EXP | EXP"]
+	Node140 -> Node146
+	Node147 [label="parametro | $a0"]
+	Node146 -> Node147
+	Node148 [label="GOTO | GOTO"]
+	Node106 -> Node148
+	Node149 [label="iden | ack"]
+	Node148 -> Node149
+	Node150 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node150
+	Node151 [label="iden | ret2"]
+	Node150 -> Node151
+	Node152 [label="SENTENCIAS | SENTENCIAS"]
+	Node150 -> Node152
+	Node153 [label="ASIGNACION | ASIGNACION"]
+	Node152 -> Node153
+	Node154 [label="parametro | $a0"]
+	Node153 -> Node154
+	Node155 [label="EXP | EXP"]
+	Node153 -> Node155
+	Node156 [label="EXP | EXP"]
+	Node155 -> Node156
+	Node157 [label="parametro | $a0"]
+	Node156 -> Node157
+	Node158 [label="op | -"]
+	Node155 -> Node158
+	Node159 [label="EXP | EXP"]
+	Node155 -> Node159
+	Node160 [label="entero | 1"]
+	Node159 -> Node160
+	Node161 [label="ASIGNACION | ASIGNACION"]
+	Node152 -> Node161
+	Node162 [label="puntero | $sp"]
+	Node161 -> Node162
+	Node163 [label="EXP | EXP"]
+	Node161 -> Node163
+	Node164 [label="EXP | EXP"]
+	Node163 -> Node164
+	Node165 [label="puntero | $sp"]
+	Node164 -> Node165
+	Node166 [label="op | +"]
+	Node163 -> Node166
+	Node167 [label="EXP | EXP"]
+	Node163 -> Node167
+	Node168 [label="entero | 1"]
+	Node167 -> Node168
+	Node169 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node152 -> Node169
+	Node170 [label="pila | $s0"]
+	Node169 -> Node170
+	Node171 [label="L_ACCESOS | L_ACCESOS"]
+	Node169 -> Node171
+	Node172 [label="ACCESO | ACCESO"]
+	Node171 -> Node172
+	Node173 [label="EXP | EXP"]
+	Node172 -> Node173
+	Node174 [label="puntero | $sp"]
+	Node173 -> Node174
+	Node175 [label="EXP | EXP"]
+	Node169 -> Node175
+	Node176 [label="parametro | $a0"]
+	Node175 -> Node176
+	Node177 [label="ASIGNACION | ASIGNACION"]
+	Node152 -> Node177
+	Node178 [label="parametro | $a0"]
+	Node177 -> Node178
+	Node179 [label="EXP | EXP"]
+	Node177 -> Node179
+	Node180 [label="EXP | EXP"]
+	Node179 -> Node180
+	Node181 [label="parametro | $a0"]
+	Node180 -> Node181
+	Node182 [label="op | +"]
+	Node179 -> Node182
+	Node183 [label="EXP | EXP"]
+	Node179 -> Node183
+	Node184 [label="entero | 1"]
+	Node183 -> Node184
+	Node185 [label="ASIGNACION | ASIGNACION"]
+	Node152 -> Node185
+	Node186 [label="puntero | $sp"]
+	Node185 -> Node186
+	Node187 [label="EXP | EXP"]
+	Node185 -> Node187
+	Node188 [label="EXP | EXP"]
+	Node187 -> Node188
+	Node189 [label="puntero | $sp"]
+	Node188 -> Node189
+	Node190 [label="op | +"]
+	Node187 -> Node190
+	Node191 [label="EXP | EXP"]
+	Node187 -> Node191
+	Node192 [label="entero | 1"]
+	Node191 -> Node192
+	Node193 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node152 -> Node193
+	Node194 [label="pila | $s0"]
+	Node193 -> Node194
+	Node195 [label="L_ACCESOS | L_ACCESOS"]
+	Node193 -> Node195
+	Node196 [label="ACCESO | ACCESO"]
+	Node195 -> Node196
+	Node197 [label="EXP | EXP"]
+	Node196 -> Node197
+	Node198 [label="puntero | $sp"]
+	Node197 -> Node198
+	Node199 [label="EXP | EXP"]
+	Node193 -> Node199
+	Node200 [label="parametro | $a0"]
+	Node199 -> Node200
+	Node201 [label="ASIGNACION | ASIGNACION"]
+	Node152 -> Node201
+	Node202 [label="parametro | $a1"]
+	Node201 -> Node202
+	Node203 [label="EXP | EXP"]
+	Node201 -> Node203
+	Node204 [label="EXP | EXP"]
+	Node203 -> Node204
+	Node205 [label="parametro | $a1"]
+	Node204 -> Node205
+	Node206 [label="op | -"]
+	Node203 -> Node206
+	Node207 [label="EXP | EXP"]
+	Node203 -> Node207
+	Node208 [label="entero | 1"]
+	Node207 -> Node208
+	Node209 [label="GOTO | GOTO"]
+	Node152 -> Node209
+	Node210 [label="iden | ack"]
+	Node209 -> Node210
+	Node211 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node211
+	Node212 [label="iden | ret3"]
+	Node211 -> Node212
+	Node213 [label="SENTENCIAS | SENTENCIAS"]
+	Node211 -> Node213
+	Node214 [label="ASIGNACION | ASIGNACION"]
+	Node213 -> Node214
+	Node215 [label="devfunc | $v0"]
+	Node214 -> Node215
+	Node216 [label="EXP | EXP"]
+	Node214 -> Node216
+	Node217 [label="parametro | $a1"]
+	Node216 -> Node217
+	Node218 [label="GOTO | GOTO"]
+	Node213 -> Node218
+	Node219 [label="iden | ret0"]
+	Node218 -> Node219
 }

@@ -7,7 +7,6 @@ class Operador:
         self.interprete=interprete
     
     def ejecutar(self,raiz):
-        print(raiz.tag)
         if(raiz.tag=="EXP"):
             if(len(raiz.childs)==3):
                 Resultado1=self.ejecutar(raiz.childs[0])
@@ -30,29 +29,61 @@ class Operador:
                 elif op=='&&' or op=='||' or op=='xor':
                     return self.logicas(Resultado1,Resultado2,fila,columna,op)
             elif(len(raiz.childs)==2):
-                print('Hello')
+                if raiz.childs[0].value=='-':
+                    temporal=self.ejecutar(raiz.childs[1])
+                    if temporal.tipo=='int':
+                        temporal.valor=int(temporal.valor)*-1
+                    elif temporal.tipo=='float':
+                        temporal.valor=float(temporal.valor)*-1
+                    else:
+                        print('Error')
+                        return res.Resultado('error','')
+                    return temporal
             else:
                 return self.ejecutar(raiz.childs[0])
 
-        elif raiz.tag=="temporal" or raiz.tag=='direccion' or raiz.tag=='parametro' or raiz.tag=='devfunc' or raiz.tag=='pila':
-            print('el valor enciclado')
-            print(raiz.value)
+        elif raiz.tag=='puntero' or raiz.tag=="temporal" or raiz.tag=='direccion' or raiz.tag=='parametro' or raiz.tag=='devfunc' or raiz.tag=='pila':
             s = self.interprete.pila.obtener(raiz.value)
             if(s!=None):
                 return res.Resultado(s.tipo,s.valor)
             else:
                 print('variable no encontrada')
         elif raiz.tag=="entero":
-            print('entero sirve')
+
             return res.Resultado("int",raiz.value)
         elif raiz.tag=='decimal':
             return res.Resultado("float",raiz.value)
-        elif raiz.tag=='string':
+        elif raiz.tag=='string' or raiz.tag=='string2':
             return res.Resultado("string",raiz.value)
         elif raiz.tag=='CASTEO':
             tipo=raiz.childs[0].value.lower()
-            
 
+        elif raiz.tag=='ARRAY':
+            return  res.Resultado("array",{})
+        elif raiz.tag=='ACCESO_ARR':
+            nombre = raiz.childs[0].value
+            s=self.interprete.pila.obtener(nombre)
+            if s==None:
+                print('error')
+                return  res.Resultado("error",'')
+            actual = s.valor
+            for x in raiz.childs[1].childs:
+                Indice = self.ejecutar(x.childs[0])
+                if type(actual)==str:
+                    actual=actual[Indice.valor]
+                elif actual.get(Indice.valor) == None:
+                    print('error')
+                    return  res.Resultado("error",'')
+                else:
+                    actual = actual[Indice.valor]
+            if type(actual)==int:
+                return res.Resultado('int',actual)
+            elif type(actual)==float:
+                return  res.Resultado('int',actual)
+            elif type(actual)==str:
+                return  res.Resultado('str',actual)
+            else:
+                return  res.Resultado('error','')
         else:
             return res.Resultado("d","")
 
@@ -75,7 +106,12 @@ class Operador:
             Resultado.valor=float(Resultado1.valor)+float(Resultado2.valor)
         else:
             Resultado.tipo="error"
-            self.interprete.errrores().insertar(N_Error.N_Error("Semantico","No es posible suma entre "+tipo1+' '+tipo2,fila,columna))
+            print('El error de suma que da es')
+            print(Resultado1.valor)
+            print(Resultado2.valor)
+            print(tipo1)
+            print(tipo2)
+            self.interprete.errores().insertar(N_Error.N_Error("Semantico","No es posible suma entre "+tipo1+' '+tipo2,fila,columna))
             return Resultado 
 
     def aritmetico(self,Resultado1,Resultado2,fila,columna,op):

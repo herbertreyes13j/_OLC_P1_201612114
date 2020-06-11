@@ -36,8 +36,6 @@ class Interprete:
                 nombre=raiz.childs[0].value
                 tipo=raiz.childs[0].tag
                 opera = op.Operador(self)
-                print('voy a asignar')
-                print(nombre)
                 Resultado = opera.ejecutar(raiz.childs[1])
                 s = self.pila.obtener(nombre)
                 if s == None:
@@ -69,6 +67,28 @@ class Interprete:
                         self.interpretar(raiz.childs[1])
             elif raiz.tag=='EXIT':
                 self.continuar=False
+            elif raiz.tag=='ASIGNACION_ARR':
+                nombre = raiz.childs[0].value
+                tipo = raiz.childs[0].tag
+                opera = op.Operador(self)
+                Resultado = opera.ejecutar(raiz.childs[2])
+                s = self.pila.obtener(nombre)
+                cuenta=1
+                Indice=None
+                if(s==None):
+                    s=sim.Simbolo(nombre,'array',{},tipo)
+                    self.pila.push(s)
+                actual=s.valor
+                for x in raiz.childs[1].childs:
+                    Indice=opera.ejecutar(x.childs[0])
+                    if(cuenta!=len(raiz.childs[1].childs) and type(actual) != dict):
+                        print('error')
+                    elif cuenta!=len(raiz.childs[1].childs):
+                        if actual.get(Indice.valor)==None:
+                            actual[Indice.valor]={}
+                            actual=actual[Indice.valor]
+                    cuenta+=1
+                actual[Indice.valor]=Resultado.valor
         else:
             return      
 
