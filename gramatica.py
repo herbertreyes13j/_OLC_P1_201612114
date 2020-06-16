@@ -172,11 +172,14 @@ import ply.lex as lex
 
 lexer = lex.lex()
 
+
+
 import AST_Node as nodo
 def p_inicio(t):
     's         : etiquetas'
     t[0] = nodo.AST_node('RAIZ','RAIZ',0,0)
     t[0].addChilds(t[1])
+
 
 def p_etiquetas_etiquetas(t):
     'etiquetas : etiquetas etiqueta'
@@ -195,7 +198,7 @@ def p_sentencias_sentencias(t):
 
 def p_if(t):
     'IF : t_if par1 exp par2 GOTO'
-    t[0]=nodo.AST_node('IF','IF',2,find_column(input,t.slice[1]))
+    t[0]=nodo.AST_node('IF','IF',t.lineno(1),find_column(input,t.slice[1]))
     t[0].addChilds(t[3],t[5])
 
 
@@ -206,8 +209,8 @@ def p_sentencias_sentencia(t):
 
 def p_etiquetas(t):
     'etiqueta : iden bipunto sentencias'
-    t[0]=nodo.AST_node('ETIQUETA','ETIQUETA',1,find_column(input,t.slice[2]))
-    t[0].addChilds(nodo.AST_node('iden',t[1],1,find_column(input,t.slice[1])),t[3])
+    t[0]=nodo.AST_node('ETIQUETA','ETIQUETA',t.lineno(2),find_column(input,t.slice[2]))
+    t[0].addChilds(nodo.AST_node('iden',t[1],t.lineno(1),find_column(input,t.slice[1])),t[3])
 
 def p_sentencia(t):
     '''sentencia : asignacion
@@ -223,23 +226,24 @@ def p_sentencia(t):
 def p_asignacion_arreglo(t):
     'ASIGNACION_ARR : asignado L_ACCESOS asigna exp PTCOMA'
     print('etra')
-    t[0]=nodo.AST_node('ASIGNACION_ARR','ASIGNACION_ARR',0,find_column(input,t.slice[3]))
+    t[0]=nodo.AST_node('ASIGNACION_ARR','ASIGNACION_ARR',t.lineno(3),find_column(input,t.slice[3]))
     t[0].addChilds(t[1],t[2],t[4])
 
 def p_unset(t):
     'UNSET : t_unset par1 asignado par2 PTCOMA'
-    t[0]=nodo.AST_node('UNSET','UNSET',0,find_column(input,t.slice[1]))
+    t[0]=nodo.AST_node('UNSET','UNSET',t.lineno(1),find_column(input,t.slice[1]))
     t[0].addChilds(t[3])
 
 def p_goto(t):
     'GOTO : t_goto iden PTCOMA'
-    t[0]=nodo.AST_node('GOTO','GOTO',1,find_column(input,t.slice[1]))
-    t[0].addChilds(nodo.AST_node('iden',t[2],1,find_column(input,t.slice[2])))
+    t[0]=nodo.AST_node('GOTO','GOTO',t.lineno(1),find_column(input,t.slice[1]))
+    t[0].addChilds(nodo.AST_node('iden',t[2],t.lineno(2),find_column(input,t.slice[2])))
 
 def p_print(t):
     'PRINT : t_print par1 exp par2 PTCOMA'
-    t[0]=nodo.AST_node('PRINT','PRINT',0,find_column(input,t.slice[1]))
-    t[0].addChilds(t[3])  
+    t[0]=nodo.AST_node('PRINT','PRINT',t.lineno(1),find_column(input,t.slice[1]))
+    t[0].addChilds(t[3])
+
 
 def p_print_error(t):
     'PRINT : t_print par1 exp par2 error'
@@ -249,16 +253,16 @@ def p_print_error(t):
 
 def p_asignacion(t):
     'asignacion : asignado asigna exp PTCOMA'
-    t[0]= nodo.AST_node('ASIGNACION','ASIGNACION',2,find_column(input,t.slice[2]))
+    t[0]= nodo.AST_node('ASIGNACION','ASIGNACION',t.lineno(2),find_column(input,t.slice[2]))
     t[0].addChilds(t[1],t[3])
 
 def p_puntero(t):
     'as_puntero : asignado asigna depuntero asignado PTCOMA'
-    t[0]= nodo.AST_node('ASIGNACION','ASIGNACION',2,find_column(input,t.slice[2]))
+    t[0]= nodo.AST_node('ASIGNACION','ASIGNACION',t.lineno(2),find_column(input,t.slice[2]))
     t[0].addChilds(t[1],t[4])
 def p_exit(t):
     'EXIT : t_exit PTCOMA'
-    t[0]=nodo.AST_node('EXIT','EXIT',1,find_column(input,t.slice[1]))
+    t[0]=nodo.AST_node('EXIT','EXIT',t.lineno(2),find_column(input,t.slice[1]))
 
 def p_aguardar(t):
     '''asignado  : temporal
@@ -267,13 +271,13 @@ def p_aguardar(t):
                   | parametro
                   | devfunc
                   | pila'''
-    t[0]=nodo.AST_node(t.slice[1].type,t[1],1,find_column(input,t.slice[1]))
+    t[0]=nodo.AST_node(t.slice[1].type,t[1],t.lineno(1),find_column(input,t.slice[1]))
 def p_exp(t):
     '''exp :  exp1 bxor exp1
             | exp1 t_xor  exp1'''
 
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
-    t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
+    t[0]= nodo.AST_node('EXP','EXP',t.lineno(2),find_column(input,t.slice[2]))
+    t[0].addChilds(t[1],nodo.AST_node('op',t[2],t.lineno(2),find_column(input,t.slice[2])),t[3])
 def p_exp_2(t):
     'exp :    exp1'
     t[0]=t[1]
@@ -283,8 +287,8 @@ def p_exp1(t):
             | exp2 or  exp2
             | exp2 shiftizq exp2
             | exp2 shiftder exp2'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[2]))
-    t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
+    t[0]= nodo.AST_node('EXP','EXP',t.lineno(2),find_column(input,t.slice[2]))
+    t[0].addChilds(t[1],nodo.AST_node('op',t[2],t.lineno(2),find_column(input,t.slice[2])),t[3])
 
 def p_exp1_2(t):
     'exp1 : exp2'
@@ -293,8 +297,8 @@ def p_exp1_2(t):
 def p_exp2(t):
     '''exp2 :   exp3 band exp3
             | exp3 and  exp3'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[1]))
-    t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
+    t[0]= nodo.AST_node('EXP','EXP',t.lineno(2),find_column(input,t.slice[1]))
+    t[0].addChilds(t[1],nodo.AST_node('op',t[2],t.lineno(2),find_column(input,t.slice[2])),t[3])
 
 def p_exp2_2(t):
     'exp2 : exp3'
@@ -303,8 +307,8 @@ def p_exp2_2(t):
 def p_exp3(t):
     '''exp3 :   exp4 igual exp4
             | exp4 diferente  exp4'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[2]))
-    t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
+    t[0]= nodo.AST_node('EXP','EXP',t.lineno(2),find_column(input,t.slice[2]))
+    t[0].addChilds(t[1],nodo.AST_node('op',t[2],t.lineno(2),find_column(input,t.slice[2])),t[3])
 
 def p_exp3_2(t):
     'exp3 : exp4'
@@ -315,8 +319,8 @@ def p_exp4(t):
             | exp5 mayori exp5
             | exp5 menor exp5
             | exp5 menori  exp5'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[2]))
-    t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
+    t[0]= nodo.AST_node('EXP','EXP',t.lineno(2),find_column(input,t.slice[2]))
+    t[0].addChilds(t[1],nodo.AST_node('op',t[2],t.lineno(2),find_column(input,t.slice[2])),t[3])
 
 def p_exp4_2(t):
     'exp4 : exp5'
@@ -325,8 +329,8 @@ def p_exp4_2(t):
 def p_exp5(t):
     '''exp5 :   exp6 mas exp6
             | exp6 res exp6'''
-    t[0]= nodo.AST_node('EXP','EXP',3,6)
-    t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
+    t[0]= nodo.AST_node('EXP','EXP',t.lineno(2),find_column(input,t.slice[2]))
+    t[0].addChilds(t[1],nodo.AST_node('op',t[2],t.lineno(2),find_column(input,t.slice[2])),t[3])
 
 
 def p_exp5_2(t):
@@ -337,8 +341,8 @@ def p_exp6(t):
     '''exp6 :   exp7 por exp7
             | exp7 div exp7
             | exp7 mod exp7'''
-    t[0]= nodo.AST_node('EXP','EXP',3,find_column(input,t.slice[2]))
-    t[0].addChilds(t[1],nodo.AST_node('op',t[2],1,find_column(input,t.slice[2])),t[3])
+    t[0]= nodo.AST_node('EXP','EXP',t.lineno(2),find_column(input,t.slice[2]))
+    t[0].addChilds(t[1],nodo.AST_node('op',t[2],t.lineno(2),find_column(input,t.slice[2])),t[3])
 
 def p_exp6_2(t):
     'exp6 : t_abs par1 exp7 par2' 
@@ -435,10 +439,11 @@ def t_eof(t):
     return None
 
 import ply.yacc as yacc
-parser = yacc.yacc()
+
 
 def parse(input1):
     global input 
     input= input1
-
-    return parser.parse(input)
+    parser = yacc.yacc()
+    parser.errok()
+    return parser.parse(input,tracking=True,lexer=lexer)
