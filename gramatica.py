@@ -402,7 +402,9 @@ def p_exp8(t):
               | pila'''
     t[0]=nodo.AST_node(t.slice[1].type,t.slice[1].value,1,find_column(input,t.slice[1]))
 
-
+def p_exp8_12(t):
+    'exp8 : par1 exp par2'
+    t[0]=t[2]
 
 def p_casts(t):
     '''exp8 : par1 t_int par2 exp

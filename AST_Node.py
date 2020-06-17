@@ -10,3 +10,7 @@ class AST_node:
         for x in hijos:
             self.childs.append(x)
 
+    def addChildsReverse(self,*hijos):
+        for x in hijos:
+            self.childs.insert(0,x)
+

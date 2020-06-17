@@ -1,23 +1,20 @@
 from tkinter import *
 from tkinter import filedialog
-from tkinter import messagebox
 from tkinter import scrolledtext
 from tkinter import ttk
 from tkinter.ttk import *
 import gramatica as g
-import AST_Node as nodo
 import graphviz
 import Interprete as inter
 import sys
 import threading
 import Debbuger
 import Descendente as des
-import InterpreteDesc as intdesc
-import os
-from tkinter import simpledialog
+import N_Error as error
 sys.setrecursionlimit(600000)
 print(sys.getrecursionlimit())
 threading.stack_size(250000000)
+reporte_errores = error.N_Error("","","","")
 def onclick():
    pass
 archivoactgual="v"
@@ -112,6 +109,7 @@ def guardarcomo():
         except Exception as e:
             print(e)
 
+
 def analizar():
 
     consola.delete('1.0',END)
@@ -125,8 +123,10 @@ def analizar():
     thread = threading.Thread(target=interprete.analizar, args=(resultado,))
     thread.start()
     thread.join()
-    consola.insert(INSERT, interprete.codigo)
+    #global reporte_errores
+    errores(interprete.errores.principio)
 
+    consola.insert(INSERT, interprete.codigo)
 def debbugear():
     consola.delete('1.0',END)
     input = txtarea.get(1.0,END)
@@ -140,22 +140,42 @@ def debbugear():
 
 
 
-def errores():
-    input("Press Enter to continue...")
+def errores(reporte_errores):
     ventana= Toplevel(window)
-    Label(ventana,text="Pene")
+    tree_errores = ttk.Treeview(ventana)
+    tree_errores["columns"] = ("Tipo", "Descripcion","Fila","Columna")
+    tree_errores.grid(column=1, row=2, sticky=S)
+    tree_errores.column("#0", width=0, stretch=NO)
+    tree_errores.column("Tipo", width=200, minwidth=200, stretch=NO)
+    tree_errores.column("Descripcion", width=400, minwidth=400)
+    tree_errores.column("Fila", width=100, minwidth=100)
+    tree_errores.column("Columna", width=100, minwidth=100)
+    tree_errores.heading("#0", text="No", anchor=W)
+    tree_errores.heading("Descripcion", text="Descripcion", anchor=W)
+    tree_errores.heading("Tipo", text="Tipo", anchor=W)
+    tree_errores.heading("Fila", text="Fila", anchor=W)
+    tree_errores.heading("Columna", text="Columna", anchor=W)
 
+    if reporte_errores is not None:
+        cuenta=1
+        while reporte_errores is not None:
+            tree_errores.insert("",cuenta,cuenta,values=(reporte_errores.tipo,reporte_errores.descripcion,
+                                                         str(reporte_errores.fila),str(reporte_errores.columna)))
+            reporte_errores=reporte_errores.siguiente
+            cuenta+=1
 def siguiente():
     debbug.debbuger=False
 
 def descendente():
+    consola.delete('1.0',END)
     input = txtarea.get(1.0,END)
     resultado = des.parse(input)
     imprimir(resultado)
-    interprete = intdesc.Interprete()
+    interprete = inter.Interprete()
     thread = threading.Thread(target=interprete.analizar, args=(resultado,))
     thread.start()
     thread.join()
+    errores(interprete.errores.principio)
     consola.insert(INSERT, interprete.codigo)
 
 menubar = Menu(window)
@@ -174,6 +194,7 @@ archivo.add_command(label="Guardar Como",
                      command=guardarcomo)
 menubar.add_cascade(label="Archivo",menu=archivo)
 
+
 btn = Button(window, text="Ejecutar", command=analizar)
 btn.grid(column=0, row=0,sticky=W)
 btn = Button(window,text="Debbuggear",command=debbugear)
@@ -190,10 +211,5 @@ label2=Label(window,text="Consola de Salida:")
 label2.grid(column=1,row=1,sticky="W")
 label3=Label(window,text="Debbuger:")
 label3.grid(column=1,row=2,sticky="W")
-
-
-
-
-
 
 window.mainloop()

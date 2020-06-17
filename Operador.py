@@ -67,15 +67,27 @@ class Operador:
                 print('error')
                 return  res.Resultado("error",'')
             actual = s.valor
+            cuenta=1
             for x in raiz.childs[1].childs:
                 Indice = self.ejecutar(x.childs[0])
                 if type(actual)==str:
                     actual=actual[Indice.valor]
+                elif actual==None:
+                    error=N_Error.N_Error('Semantico','El indice esta vacio',raiz.fila,raiz.columna)
+                    self.interprete.errores.insertar(error)
+                    self.interprete.codigo+=error.totext()
+                    return  res.Resultado("error",'')
                 elif actual.get(Indice.valor) == None:
                     print('error')
                     return  res.Resultado("error",'')
                 else:
                     actual = actual[Indice.valor]
+                    if (cuenta != len(raiz.childs[1].childs) and type(actual) != dict):
+                        error = N_Error.N_Error("Semantico", 'Indice no existe', raiz.childs[0].fila, x.columna)
+                        self.interprete.codigo += error.totext()
+                        self.interprete.errores.insertar(error)
+                        return res.Resultado('error','')
+                cuenta+=1
             if type(actual)==int:
                 return res.Resultado('int',actual)
             elif type(actual)==float:
@@ -106,11 +118,6 @@ class Operador:
             Resultado.valor=float(Resultado1.valor)+float(Resultado2.valor)
         else:
             Resultado.tipo="error"
-            print('El error de suma que da es')
-            print(Resultado1.valor)
-            print(Resultado2.valor)
-            print(tipo1)
-            print(tipo2)
             self.interprete.errores().insertar(N_Error.N_Error("Semantico","No es posible suma entre "+tipo1+' '+tipo2,fila,columna))
             return Resultado 
 

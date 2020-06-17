@@ -4,11 +4,10 @@ class L_Error:
         self.principio=None
 
     def insertar(self,r):
-        if(self.principio==None):
-            self.principio=None
-            self.fin=None
+        if self.principio is None:
+            self.principio=r
+            self.fin=r
             return
-        
         self.fin.siguiente=r
         r.anterior=self.fin
         self.fin=r

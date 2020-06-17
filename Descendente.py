@@ -195,34 +195,35 @@ def p_inicio(t):
 
 def p_etiquetas_etiquetas(t):
     'etiquetas : etiqueta etiqueta_prima'
-    t[0] = nodo.AST_node('ETIQUETAS', 'ETIQUETAS', 0, 0)
-    t[0].addChilds(t[1])
-
+    #t[0] = nodo.AST_node('ETIQUETAS', 'ETIQUETAS', 0, 0)
+    #t[0].addChilds(t[1])
+    t[0]=t[2]
+    t[0].addChildsReverse(t[1])
 
 
 def p_etiqueta_prima(t):
     'etiqueta_prima : etiqueta etiqueta_prima'
-    t[0] = t[-1]
-    t[0].addChilds(t[1])
+    t[0]=t[2]
+    t[0].addChildsReverse(t[1])
 
 def p_etiqueta_prima_eps(t):
     'etiqueta_prima : '
-    t[0] = [t[-1]]
+    t[0] = nodo.AST_node("ETIQUETAS","ETIQUETAS",3,3)
 
 
 def p_sentencias_sentencias(t):
     'sentencias : sentencia sentencia_prima'
-    t[0] = nodo.AST_node('SENTENCIAS', 'SENTENCIAS', 0, 0)
-    t[0].addChilds(t[1])
+    t[0] = t[2]
+    t[0].addChildsReverse(t[1])
 
 def p_sentencia_prima(t):
     'sentencia_prima         : sentencia sentencia_prima'
-    t[0] = t[-1]
-    t[0].addChilds(t[1])
+    t[0] = t[2]
+    t[0].addChildsReverse(t[1])
 
 def p_sentencia_prima_eps(t):
     'sentencia_prima : '
-    t[0]=[t[-1]]
+    t[0]=nodo.AST_node('SENTENCIAS', 'SENTENCIAS', 0, 0)
 def p_if(t):
     'IF : t_if par1 exp par2 GOTO'
     t[0] = nodo.AST_node('IF', 'IF', t.lineno(1), find_column(input, t.slice[1]))

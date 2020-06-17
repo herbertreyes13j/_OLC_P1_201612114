@@ -6,3 +6,11 @@ class N_Error:
         self.columna=columna
         self.siguiente=None
         self.anterior=None
+
+    def totext(self):
+        texto=''
+        texto+='\nERROR---> Tipo: '+self.tipo
+        texto+=', Descripcion: ' + self.descripcion
+        texto+=', Fila: '+str(self.fila)
+        texto+=', Columna: '+str(self.columna)+'\n'
+        return texto
