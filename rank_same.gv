@@ -10,90 +10,12 @@ digraph {
 	Node2 -> Node4
 	Node5 [label="PRINT | PRINT"]
 	Node4 -> Node5
-	Node6 [label="string | hola"]
+	Node6 [label="EXP | EXP"]
 	Node5 -> Node6
-	Node7 [label="PRINT | PRINT"]
-	Node4 -> Node7
-	Node8 [label="EXP | EXP"]
+	Node7 [label="CASTEO | CASTEO"]
+	Node6 -> Node7
+	Node8 [label="tipo | char"]
 	Node7 -> Node8
-	Node9 [label="string | hola"]
-	Node8 -> Node9
-	Node10 [label="op | =="]
-	Node8 -> Node10
-	Node11 [label="string | adios"]
-	Node8 -> Node11
-	Node12 [label="PRINT | PRINT"]
-	Node4 -> Node12
-	Node13 [label="EXP | EXP"]
-	Node12 -> Node13
-	Node14 [label="string | hola"]
-	Node13 -> Node14
-	Node15 [label="op | =="]
-	Node13 -> Node15
-	Node16 [label="string | hola"]
-	Node13 -> Node16
-	Node17 [label="PRINT | PRINT"]
-	Node4 -> Node17
-	Node18 [label="EXP | EXP"]
-	Node17 -> Node18
-	Node19 [label="entero | 4"]
-	Node18 -> Node19
-	Node20 [label="op | <"]
-	Node18 -> Node20
-	Node21 [label="string | hola"]
-	Node18 -> Node21
-	Node22 [label="PRINT | PRINT"]
-	Node4 -> Node22
-	Node23 [label="EXP | EXP"]
-	Node22 -> Node23
-	Node24 [label="entero | 3"]
-	Node23 -> Node24
-	Node25 [label="op | <<"]
-	Node23 -> Node25
-	Node26 [label="entero | 4"]
-	Node23 -> Node26
-	Node27 [label="GOTO | GOTO"]
-	Node4 -> Node27
-	Node28 [label="iden | dos"]
-	Node27 -> Node28
-	Node29 [label="ETIQUETA | ETIQUETA"]
-	Node1 -> Node29
-	Node30 [label="iden | uno"]
-	Node29 -> Node30
-	Node31 [label="SENTENCIAS | SENTENCIAS"]
-	Node29 -> Node31
-	Node32 [label="PRINT | PRINT"]
-	Node31 -> Node32
-	Node33 [label="string | Ruthsia"]
-	Node32 -> Node33
-	Node34 [label="PRINT | PRINT"]
-	Node31 -> Node34
-	Node35 [label="entero | 3232"]
-	Node34 -> Node35
-	Node36 [label="GOTO | GOTO"]
-	Node31 -> Node36
-	Node37 [label="iden | tres"]
-	Node36 -> Node37
-	Node38 [label="ETIQUETA | ETIQUETA"]
-	Node1 -> Node38
-	Node39 [label="iden | dos"]
-	Node38 -> Node39
-	Node40 [label="SENTENCIAS | SENTENCIAS"]
-	Node38 -> Node40
-	Node41 [label="PRINT | PRINT"]
-	Node40 -> Node41
-	Node42 [label="string | ya casi"]
-	Node41 -> Node42
-	Node43 [label="GOTO | GOTO"]
-	Node40 -> Node43
-	Node44 [label="iden | uno"]
-	Node43 -> Node44
-	Node45 [label="ETIQUETA | ETIQUETA"]
-	Node1 -> Node45
-	Node46 [label="iden | tres"]
-	Node45 -> Node46
-	Node47 [label="SENTENCIAS | SENTENCIAS"]
-	Node45 -> Node47
-	Node48 [label="EXIT | EXIT"]
-	Node47 -> Node48
+	Node9 [label="entero | 85"]
+	Node7 -> Node9
 }

@@ -57,7 +57,63 @@ class Operador:
             return res.Resultado("string",raiz.value)
         elif raiz.tag=='CASTEO':
             tipo=raiz.childs[0].value.lower()
+            Resultado = self.ejecutar(raiz.childs[1])
 
+            if tipo=='int':
+                if Resultado.tipo=='float':
+                    Resultado.tipo='int'
+                    Resultado.valor=int(Resultado.valor)
+                    return Resultado
+                elif Resultado.tipo=='string':
+                    Resultado.tipo='int'
+                    Resultado.valor=ord(Resultado.valor[0])
+                    return Resultado
+                elif Resultado.tipo=='int':
+                    Resultado.tipo='int'
+                    Resultado.valor=int(Resultado.valor)
+                    return  Resultado
+                else:
+                    self.interprete.errores.insertar(N_Error.N_Error("Semantico","Casteo no valido",
+                                                                     raiz.childs[0].fila,raiz.childs[0].columna))
+                    return res.Resultado("error","")
+            elif tipo=='float':
+                if Resultado.tipo=='int':
+                    Resultado.tipo='float'
+                    Resultado.valor=float(Resultado.valor)
+                    return Resultado
+                elif Resultado.tipo=='float':
+                    Resultado.tipo='float'
+                    Resultado.valor=float(Resultado.valor)
+                    return Resultado
+                elif Resultado.tipo == 'string':
+                    Resultado.tipo = 'float'
+                    Resultado.valor = float(ord(Resultado.valor[0]))
+                    return Resultado
+                else:
+                    self.interprete.errores.insertar(N_Error.N_Error("Semantico","Casteo no valido",
+                                                                     raiz.childs[0].fila,raiz.childs[0].columna))
+                    return res.Resultado("error","")
+            elif tipo=='char':
+                if Resultado.tipo=='int':
+                    Resultado.tipo='string'
+                    if int(Resultado.valor)> 255:
+                        Resultado.valor=int(Resultado.valor)%256
+                    Resultado.valor=chr(int(Resultado.valor))
+                    return Resultado
+                elif Resultado.tipo=='float':
+                    if int(Resultado.valor)>255:
+                        Resultado.valor=int(Resultado.valor)%256
+                    Resultado.tipo='string'
+                    Resultado.valor=chr(int(Resultado.valor))
+                    return Resultado
+                elif Resultado.tipo=='string':
+                    Resultado.tipo='string'
+                    Resultado.valor=str(Resultado.valor[0])
+                    return Resultado
+                else:
+                    self.interprete.errores.insertar(N_Error.N_Error("Semantico","Casteo no valido",
+                                                                     raiz.childs[0].fila,raiz.childs[0].columna))
+                    return res.Resultado("error","")
         elif raiz.tag=='ARRAY':
             return  res.Resultado("array",{})
         elif raiz.tag=='ACCESO_ARR':
@@ -116,6 +172,7 @@ class Operador:
         elif (tipo1=="float" and tipo2=="float") or (tipo1=="int" and tipo2=="float") or (tipo1=="float" and tipo2=="int"):
             Resultado.tipo="float"
             Resultado.valor=float(Resultado1.valor)+float(Resultado2.valor)
+            return Resultado
         else:
             Resultado.tipo="error"
             self.interprete.errores().insertar(N_Error.N_Error("Semantico","No es posible suma entre "+tipo1+' '+tipo2,fila,columna))
