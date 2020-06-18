@@ -1,9 +1,10 @@
+import N_Error as err
+
 reservadas = {
     'goto': 't_goto',
     'unset': 't_unset',
     'print': 't_print',
     'exit': 't_exit',
-    'unset': 't_unset',
     'read': 't_read',
     'int': 't_int',
     'float': 't_float',
@@ -176,6 +177,8 @@ def find_column(input, token):
 
 
 def t_error(t):
+    errores.insertar(err.N_Error("Lexico", "Caracter ilegal '%s'" % t.value[0],
+                                 t.lineno, find_column(input, t)))
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
@@ -191,7 +194,6 @@ def p_inicio(t):
     's         : etiquetas'
     t[0] = nodo.AST_node('RAIZ', 'RAIZ', 0, 0)
     t[0].addChilds(t[1])
-
 
 def p_etiquetas_etiquetas(t):
     'etiquetas : etiqueta etiqueta_prima'
@@ -209,6 +211,7 @@ def p_etiqueta_prima(t):
 def p_etiqueta_prima_eps(t):
     'etiqueta_prima : '
     t[0] = nodo.AST_node("ETIQUETAS","ETIQUETAS",3,3)
+
 
 
 def p_sentencias_sentencias(t):
@@ -452,7 +455,7 @@ def p_exp7_2(t):
 
 
 def p_exp8(t):
-    '''exp8 :  string
+    '''exp8 :   string
               | string2
               | entero
               | decimal
@@ -490,8 +493,18 @@ def p_array(t):
 
 
 def p_error(t):
-    print(t)
-    print("Error sintáctico en '%s'" % t.value)
+    if not t:
+        errores.insertar(err.N_Error("SINTACTICO",'Error sintactico irrecuperable',
+                                   t.lineno,find_column(input,t)))
+        return
+
+    errores.insertar(err.N_Error("Sintactico",str(t.value),
+                                     t.lineno,find_column(input,t)))
+    while True:
+        tok = parser.token()
+        if not tok or tok.type == 'PTCOMA':
+            break
+    parser.restart()
 
 
 def t_eof(t):
@@ -506,9 +519,12 @@ def t_eof(t):
 import ply.yacc as yacc
 
 
-def parse(input1):
+def parse(input1,errores1):
     global input
-    input = input1
+    global errores
+    errores=errores1
+    input= input1
+    global parser
     parser = yacc.yacc()
     parser.errok()
     return parser.parse(input, tracking=True, lexer=lexer)

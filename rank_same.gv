@@ -8,14 +8,268 @@ digraph {
 	Node2 -> Node3
 	Node4 [label="SENTENCIAS | SENTENCIAS"]
 	Node2 -> Node4
-	Node5 [label="PRINT | PRINT"]
+	Node5 [label="ASIGNACION | ASIGNACION"]
 	Node4 -> Node5
-	Node6 [label="EXP | EXP"]
+	Node6 [label="temporal | $t0"]
 	Node5 -> Node6
-	Node7 [label="CASTEO | CASTEO"]
-	Node6 -> Node7
-	Node8 [label="tipo | char"]
-	Node7 -> Node8
-	Node9 [label="entero | 85"]
-	Node7 -> Node9
+	Node7 [label="string2 | ARCHIVO BASICO\n"]
+	Node5 -> Node7
+	Node8 [label="PRINT | PRINT"]
+	Node4 -> Node8
+	Node9 [label="temporal | $t0"]
+	Node8 -> Node9
+	Node10 [label="PRINT | PRINT"]
+	Node4 -> Node10
+	Node11 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node10 -> Node11
+	Node12 [label="temporal | $t0"]
+	Node11 -> Node12
+	Node13 [label="L_ACCESOS | L_ACCESOS"]
+	Node11 -> Node13
+	Node14 [label="ACCESO | ACCESO"]
+	Node13 -> Node14
+	Node15 [label="entero | 0"]
+	Node14 -> Node15
+	Node16 [label="PRINT | PRINT"]
+	Node4 -> Node16
+	Node17 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node16 -> Node17
+	Node18 [label="temporal | $t0"]
+	Node17 -> Node18
+	Node19 [label="L_ACCESOS | L_ACCESOS"]
+	Node17 -> Node19
+	Node20 [label="ACCESO | ACCESO"]
+	Node19 -> Node20
+	Node21 [label="entero | 8"]
+	Node20 -> Node21
+	Node22 [label="PRINT | PRINT"]
+	Node4 -> Node22
+	Node23 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node22 -> Node23
+	Node24 [label="temporal | $t0"]
+	Node23 -> Node24
+	Node25 [label="L_ACCESOS | L_ACCESOS"]
+	Node23 -> Node25
+	Node26 [label="ACCESO | ACCESO"]
+	Node25 -> Node26
+	Node27 [label="entero | 12"]
+	Node26 -> Node27
+	Node28 [label="UNSET | UNSET"]
+	Node4 -> Node28
+	Node29 [label="temporal | $t0"]
+	Node28 -> Node29
+	Node30 [label="PRINT | PRINT"]
+	Node4 -> Node30
+	Node31 [label="string2 | \n"]
+	Node30 -> Node31
+	Node32 [label="PRINT | PRINT"]
+	Node4 -> Node32
+	Node33 [label="string2 | Ingresa un numero: \n"]
+	Node32 -> Node33
+	Node34 [label="PRINT | PRINT"]
+	Node4 -> Node34
+	Node35 [label="string2 | \n"]
+	Node34 -> Node35
+	Node36 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node36
+	Node37 [label="temporal | $t1"]
+	Node36 -> Node37
+	Node38 [label="entero | 1"]
+	Node36 -> Node38
+	Node39 [label="PRINT | PRINT"]
+	Node4 -> Node39
+	Node40 [label="string2 | \n"]
+	Node39 -> Node40
+	Node41 [label="PRINT | PRINT"]
+	Node4 -> Node41
+	Node42 [label="string2 | Ingreso un segundo numero: "]
+	Node41 -> Node42
+	Node43 [label="PRINT | PRINT"]
+	Node4 -> Node43
+	Node44 [label="string2 | \n"]
+	Node43 -> Node44
+	Node45 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node45
+	Node46 [label="temporal | $t2"]
+	Node45 -> Node46
+	Node47 [label="entero | 1"]
+	Node45 -> Node47
+	Node48 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node48
+	Node49 [label="temporal | $t3"]
+	Node48 -> Node49
+	Node50 [label="EXP | EXP"]
+	Node48 -> Node50
+	Node51 [label="temporal | $t1"]
+	Node50 -> Node51
+	Node52 [label="op | +"]
+	Node50 -> Node52
+	Node53 [label="temporal | $t2"]
+	Node50 -> Node53
+	Node54 [label="PRINT | PRINT"]
+	Node4 -> Node54
+	Node55 [label="string2 | La suma de los numeros es: "]
+	Node54 -> Node55
+	Node56 [label="PRINT | PRINT"]
+	Node4 -> Node56
+	Node57 [label="temporal | $t3"]
+	Node56 -> Node57
+	Node58 [label="PRINT | PRINT"]
+	Node4 -> Node58
+	Node59 [label="string2 | \n"]
+	Node58 -> Node59
+	Node60 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node60
+	Node61 [label="temporal | $t3"]
+	Node60 -> Node61
+	Node62 [label="EXP | EXP"]
+	Node60 -> Node62
+	Node63 [label="temporal | $t1"]
+	Node62 -> Node63
+	Node64 [label="op | -"]
+	Node62 -> Node64
+	Node65 [label="temporal | $t2"]
+	Node62 -> Node65
+	Node66 [label="PRINT | PRINT"]
+	Node4 -> Node66
+	Node67 [label="string2 | La resta de los numeros es: "]
+	Node66 -> Node67
+	Node68 [label="PRINT | PRINT"]
+	Node4 -> Node68
+	Node69 [label="temporal | $t3"]
+	Node68 -> Node69
+	Node70 [label="PRINT | PRINT"]
+	Node4 -> Node70
+	Node71 [label="string2 | \n"]
+	Node70 -> Node71
+	Node72 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node72
+	Node73 [label="temporal | $t3"]
+	Node72 -> Node73
+	Node74 [label="EXP | EXP"]
+	Node72 -> Node74
+	Node75 [label="temporal | $t1"]
+	Node74 -> Node75
+	Node76 [label="op | *"]
+	Node74 -> Node76
+	Node77 [label="temporal | $t2"]
+	Node74 -> Node77
+	Node78 [label="PRINT | PRINT"]
+	Node4 -> Node78
+	Node79 [label="string2 | La multiplicaciÃ³n de los numeros es: "]
+	Node78 -> Node79
+	Node80 [label="PRINT | PRINT"]
+	Node4 -> Node80
+	Node81 [label="temporal | $t3"]
+	Node80 -> Node81
+	Node82 [label="PRINT | PRINT"]
+	Node4 -> Node82
+	Node83 [label="string2 | \n"]
+	Node82 -> Node83
+	Node84 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node84
+	Node85 [label="temporal | $t3"]
+	Node84 -> Node85
+	Node86 [label="EXP | EXP"]
+	Node84 -> Node86
+	Node87 [label="temporal | $t1"]
+	Node86 -> Node87
+	Node88 [label="op | /"]
+	Node86 -> Node88
+	Node89 [label="temporal | $t2"]
+	Node86 -> Node89
+	Node90 [label="IF | IF"]
+	Node4 -> Node90
+	Node91 [label="EXP | EXP"]
+	Node90 -> Node91
+	Node92 [label="temporal | $t2"]
+	Node91 -> Node92
+	Node93 [label="op | =="]
+	Node91 -> Node93
+	Node94 [label="entero | 0"]
+	Node91 -> Node94
+	Node95 [label="GOTO | GOTO"]
+	Node90 -> Node95
+	Node96 [label="iden | error"]
+	Node95 -> Node96
+	Node97 [label="PRINT | PRINT"]
+	Node4 -> Node97
+	Node98 [label="string2 | La division de los numeros es: "]
+	Node97 -> Node98
+	Node99 [label="PRINT | PRINT"]
+	Node4 -> Node99
+	Node100 [label="temporal | $t3"]
+	Node99 -> Node100
+	Node101 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node101
+	Node102 [label="temporal | $t4"]
+	Node101 -> Node102
+	Node103 [label="EXP | EXP"]
+	Node101 -> Node103
+	Node104 [label="CASTEO | CASTEO"]
+	Node103 -> Node104
+	Node105 [label="tipo | int"]
+	Node104 -> Node105
+	Node106 [label="temporal | $t1"]
+	Node104 -> Node106
+	Node107 [label="PRINT | PRINT"]
+	Node4 -> Node107
+	Node108 [label="temporal | $t4"]
+	Node107 -> Node108
+	Node109 [label="PRINT | PRINT"]
+	Node4 -> Node109
+	Node110 [label="string2 | \n"]
+	Node109 -> Node110
+	Node111 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node111
+	Node112 [label="temporal | $t4"]
+	Node111 -> Node112
+	Node113 [label="EXP | EXP"]
+	Node111 -> Node113
+	Node114 [label="CASTEO | CASTEO"]
+	Node113 -> Node114
+	Node115 [label="tipo | float"]
+	Node114 -> Node115
+	Node116 [label="temporal | $t3"]
+	Node114 -> Node116
+	Node117 [label="PRINT | PRINT"]
+	Node4 -> Node117
+	Node118 [label="temporal | $t4"]
+	Node117 -> Node118
+	Node119 [label="PRINT | PRINT"]
+	Node4 -> Node119
+	Node120 [label="string2 | \n"]
+	Node119 -> Node120
+	Node121 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node121
+	Node122 [label="temporal | $t5"]
+	Node121 -> Node122
+	Node123 [label="EXP | EXP"]
+	Node121 -> Node123
+	Node124 [label="temporal | $t4"]
+	Node123 -> Node124
+	Node125 [label="op | +"]
+	Node123 -> Node125
+	Node126 [label="entero | 1"]
+	Node123 -> Node126
+	Node127 [label="PRINT | PRINT"]
+	Node4 -> Node127
+	Node128 [label="string2 | Resultado de la suma: \n"]
+	Node127 -> Node128
+	Node129 [label="PRINT | PRINT"]
+	Node4 -> Node129
+	Node130 [label="temporal | $t5"]
+	Node129 -> Node130
+	Node131 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node131
+	Node132 [label="iden | error"]
+	Node131 -> Node132
+	Node133 [label="SENTENCIAS | SENTENCIAS"]
+	Node131 -> Node133
+	Node134 [label="PRINT | PRINT"]
+	Node133 -> Node134
+	Node135 [label="string2 | \nERROR: no se puede realizar una divisiï¿½n entre 0.'"]
+	Node134 -> Node135
+	Node136 [label="EXIT | EXIT"]
+	Node133 -> Node136
 }

@@ -1,0 +1,1011 @@
+digraph {
+	Node0 [label=RAIZ]
+	Node1 [label="ETIQUETAS | ETIQUETAS"]
+	Node0 -> Node1
+	Node2 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node2
+	Node3 [label="iden | main"]
+	Node2 -> Node3
+	Node4 [label="SENTENCIAS | SENTENCIAS"]
+	Node2 -> Node4
+	Node5 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node5
+	Node6 [label="temporal | $t1"]
+	Node5 -> Node6
+	Node7 [label="L_ACCESOS | L_ACCESOS"]
+	Node5 -> Node7
+	Node8 [label="ACCESO | ACCESO"]
+	Node7 -> Node8
+	Node9 [label="entero | 0"]
+	Node8 -> Node9
+	Node10 [label="ACCESO | ACCESO"]
+	Node7 -> Node10
+	Node11 [label="string | nombre"]
+	Node10 -> Node11
+	Node12 [label="string2 | Hugo"]
+	Node5 -> Node12
+	Node13 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node13
+	Node14 [label="temporal | $t1"]
+	Node13 -> Node14
+	Node15 [label="L_ACCESOS | L_ACCESOS"]
+	Node13 -> Node15
+	Node16 [label="ACCESO | ACCESO"]
+	Node15 -> Node16
+	Node17 [label="entero | 0"]
+	Node16 -> Node17
+	Node18 [label="ACCESO | ACCESO"]
+	Node15 -> Node18
+	Node19 [label="string | direccion"]
+	Node18 -> Node19
+	Node20 [label="string2 | zona 4"]
+	Node13 -> Node20
+	Node21 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node21
+	Node22 [label="temporal | $t1"]
+	Node21 -> Node22
+	Node23 [label="L_ACCESOS | L_ACCESOS"]
+	Node21 -> Node23
+	Node24 [label="ACCESO | ACCESO"]
+	Node23 -> Node24
+	Node25 [label="entero | 0"]
+	Node24 -> Node25
+	Node26 [label="ACCESO | ACCESO"]
+	Node23 -> Node26
+	Node27 [label="string | telefono"]
+	Node26 -> Node27
+	Node28 [label="ACCESO | ACCESO"]
+	Node23 -> Node28
+	Node29 [label="entero | 0"]
+	Node28 -> Node29
+	Node30 [label="entero | 56457854"]
+	Node21 -> Node30
+	Node31 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node31
+	Node32 [label="temporal | $t1"]
+	Node31 -> Node32
+	Node33 [label="L_ACCESOS | L_ACCESOS"]
+	Node31 -> Node33
+	Node34 [label="ACCESO | ACCESO"]
+	Node33 -> Node34
+	Node35 [label="entero | 0"]
+	Node34 -> Node35
+	Node36 [label="ACCESO | ACCESO"]
+	Node33 -> Node36
+	Node37 [label="string | telefono"]
+	Node36 -> Node37
+	Node38 [label="ACCESO | ACCESO"]
+	Node33 -> Node38
+	Node39 [label="entero | 0"]
+	Node38 -> Node39
+	Node40 [label="entero | 45784565"]
+	Node31 -> Node40
+	Node41 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node41
+	Node42 [label="temporal | $t1"]
+	Node41 -> Node42
+	Node43 [label="L_ACCESOS | L_ACCESOS"]
+	Node41 -> Node43
+	Node44 [label="ACCESO | ACCESO"]
+	Node43 -> Node44
+	Node45 [label="entero | 1"]
+	Node44 -> Node45
+	Node46 [label="ACCESO | ACCESO"]
+	Node43 -> Node46
+	Node47 [label="string | nombre"]
+	Node46 -> Node47
+	Node48 [label="string2 | Paco"]
+	Node41 -> Node48
+	Node49 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node49
+	Node50 [label="temporal | $t1"]
+	Node49 -> Node50
+	Node51 [label="L_ACCESOS | L_ACCESOS"]
+	Node49 -> Node51
+	Node52 [label="ACCESO | ACCESO"]
+	Node51 -> Node52
+	Node53 [label="entero | 1"]
+	Node52 -> Node53
+	Node54 [label="ACCESO | ACCESO"]
+	Node51 -> Node54
+	Node55 [label="string | direccion"]
+	Node54 -> Node55
+	Node56 [label="string2 | zona 8, villa nueva"]
+	Node49 -> Node56
+	Node57 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node57
+	Node58 [label="temporal | $t1"]
+	Node57 -> Node58
+	Node59 [label="L_ACCESOS | L_ACCESOS"]
+	Node57 -> Node59
+	Node60 [label="ACCESO | ACCESO"]
+	Node59 -> Node60
+	Node61 [label="entero | 1"]
+	Node60 -> Node61
+	Node62 [label="ACCESO | ACCESO"]
+	Node59 -> Node62
+	Node63 [label="string | telefono"]
+	Node62 -> Node63
+	Node64 [label="ACCESO | ACCESO"]
+	Node59 -> Node64
+	Node65 [label="entero | 0"]
+	Node64 -> Node65
+	Node66 [label="entero | 56412854"]
+	Node57 -> Node66
+	Node67 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node67
+	Node68 [label="temporal | $t1"]
+	Node67 -> Node68
+	Node69 [label="L_ACCESOS | L_ACCESOS"]
+	Node67 -> Node69
+	Node70 [label="ACCESO | ACCESO"]
+	Node69 -> Node70
+	Node71 [label="entero | 1"]
+	Node70 -> Node71
+	Node72 [label="ACCESO | ACCESO"]
+	Node69 -> Node72
+	Node73 [label="string | telefono"]
+	Node72 -> Node73
+	Node74 [label="ACCESO | ACCESO"]
+	Node69 -> Node74
+	Node75 [label="entero | 0"]
+	Node74 -> Node75
+	Node76 [label="entero | 45784125"]
+	Node67 -> Node76
+	Node77 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node77
+	Node78 [label="temporal | $t1"]
+	Node77 -> Node78
+	Node79 [label="L_ACCESOS | L_ACCESOS"]
+	Node77 -> Node79
+	Node80 [label="ACCESO | ACCESO"]
+	Node79 -> Node80
+	Node81 [label="entero | 2"]
+	Node80 -> Node81
+	Node82 [label="ACCESO | ACCESO"]
+	Node79 -> Node82
+	Node83 [label="string | nombre"]
+	Node82 -> Node83
+	Node84 [label="string2 | Luis"]
+	Node77 -> Node84
+	Node85 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node85
+	Node86 [label="temporal | $t1"]
+	Node85 -> Node86
+	Node87 [label="L_ACCESOS | L_ACCESOS"]
+	Node85 -> Node87
+	Node88 [label="ACCESO | ACCESO"]
+	Node87 -> Node88
+	Node89 [label="entero | 2"]
+	Node88 -> Node89
+	Node90 [label="ACCESO | ACCESO"]
+	Node87 -> Node90
+	Node91 [label="string | direccion"]
+	Node90 -> Node91
+	Node92 [label="string2 | zona 1, San Jose Pinula "]
+	Node85 -> Node92
+	Node93 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node93
+	Node94 [label="temporal | $t1"]
+	Node93 -> Node94
+	Node95 [label="L_ACCESOS | L_ACCESOS"]
+	Node93 -> Node95
+	Node96 [label="ACCESO | ACCESO"]
+	Node95 -> Node96
+	Node97 [label="entero | 2"]
+	Node96 -> Node97
+	Node98 [label="ACCESO | ACCESO"]
+	Node95 -> Node98
+	Node99 [label="string | telefono"]
+	Node98 -> Node99
+	Node100 [label="ACCESO | ACCESO"]
+	Node95 -> Node100
+	Node101 [label="entero | 0"]
+	Node100 -> Node101
+	Node102 [label="entero | 12412854"]
+	Node93 -> Node102
+	Node103 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node103
+	Node104 [label="temporal | $t1"]
+	Node103 -> Node104
+	Node105 [label="L_ACCESOS | L_ACCESOS"]
+	Node103 -> Node105
+	Node106 [label="ACCESO | ACCESO"]
+	Node105 -> Node106
+	Node107 [label="entero | 2"]
+	Node106 -> Node107
+	Node108 [label="ACCESO | ACCESO"]
+	Node105 -> Node108
+	Node109 [label="string | telefono"]
+	Node108 -> Node109
+	Node110 [label="ACCESO | ACCESO"]
+	Node105 -> Node110
+	Node111 [label="entero | 0"]
+	Node110 -> Node111
+	Node112 [label="entero | 45784125"]
+	Node103 -> Node112
+	Node113 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node113
+	Node114 [label="temporal | $t1"]
+	Node113 -> Node114
+	Node115 [label="L_ACCESOS | L_ACCESOS"]
+	Node113 -> Node115
+	Node116 [label="ACCESO | ACCESO"]
+	Node115 -> Node116
+	Node117 [label="entero | 3"]
+	Node116 -> Node117
+	Node118 [label="ACCESO | ACCESO"]
+	Node115 -> Node118
+	Node119 [label="string | nombre"]
+	Node118 -> Node119
+	Node120 [label="string2 | Peter Parker"]
+	Node113 -> Node120
+	Node121 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node121
+	Node122 [label="temporal | $t1"]
+	Node121 -> Node122
+	Node123 [label="L_ACCESOS | L_ACCESOS"]
+	Node121 -> Node123
+	Node124 [label="ACCESO | ACCESO"]
+	Node123 -> Node124
+	Node125 [label="entero | 3"]
+	Node124 -> Node125
+	Node126 [label="ACCESO | ACCESO"]
+	Node123 -> Node126
+	Node127 [label="string | direccion"]
+	Node126 -> Node127
+	Node128 [label="string2 | Petapolis"]
+	Node121 -> Node128
+	Node129 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node129
+	Node130 [label="temporal | $t1"]
+	Node129 -> Node130
+	Node131 [label="L_ACCESOS | L_ACCESOS"]
+	Node129 -> Node131
+	Node132 [label="ACCESO | ACCESO"]
+	Node131 -> Node132
+	Node133 [label="entero | 3"]
+	Node132 -> Node133
+	Node134 [label="ACCESO | ACCESO"]
+	Node131 -> Node134
+	Node135 [label="string | telefono"]
+	Node134 -> Node135
+	Node136 [label="ACCESO | ACCESO"]
+	Node131 -> Node136
+	Node137 [label="entero | 0"]
+	Node136 -> Node137
+	Node138 [label="entero | 12412124"]
+	Node129 -> Node138
+	Node139 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node4 -> Node139
+	Node140 [label="temporal | $t1"]
+	Node139 -> Node140
+	Node141 [label="L_ACCESOS | L_ACCESOS"]
+	Node139 -> Node141
+	Node142 [label="ACCESO | ACCESO"]
+	Node141 -> Node142
+	Node143 [label="entero | 3"]
+	Node142 -> Node143
+	Node144 [label="ACCESO | ACCESO"]
+	Node141 -> Node144
+	Node145 [label="string | telefono"]
+	Node144 -> Node145
+	Node146 [label="ACCESO | ACCESO"]
+	Node141 -> Node146
+	Node147 [label="entero | 0"]
+	Node146 -> Node147
+	Node148 [label="entero | 45124125"]
+	Node139 -> Node148
+	Node149 [label="ASIGNACION | ASIGNACION"]
+	Node4 -> Node149
+	Node150 [label="temporal | $t2"]
+	Node149 -> Node150
+	Node151 [label="entero | 0"]
+	Node149 -> Node151
+	Node152 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node152
+	Node153 [label="iden | while0"]
+	Node152 -> Node153
+	Node154 [label="SENTENCIAS | SENTENCIAS"]
+	Node152 -> Node154
+	Node155 [label="IF | IF"]
+	Node154 -> Node155
+	Node156 [label="EXP | EXP"]
+	Node155 -> Node156
+	Node157 [label="temporal | $t2"]
+	Node156 -> Node157
+	Node158 [label="op | >="]
+	Node156 -> Node158
+	Node159 [label="entero | 4"]
+	Node156 -> Node159
+	Node160 [label="GOTO | GOTO"]
+	Node155 -> Node160
+	Node161 [label="iden | end0"]
+	Node160 -> Node161
+	Node162 [label="PRINT | PRINT"]
+	Node154 -> Node162
+	Node163 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node162 -> Node163
+	Node164 [label="temporal | $t1"]
+	Node163 -> Node164
+	Node165 [label="L_ACCESOS | L_ACCESOS"]
+	Node163 -> Node165
+	Node166 [label="ACCESO | ACCESO"]
+	Node165 -> Node166
+	Node167 [label="temporal | $t2"]
+	Node166 -> Node167
+	Node168 [label="ACCESO | ACCESO"]
+	Node165 -> Node168
+	Node169 [label="string2 | nombre"]
+	Node168 -> Node169
+	Node170 [label="PRINT | PRINT"]
+	Node154 -> Node170
+	Node171 [label="string2 | ,"]
+	Node170 -> Node171
+	Node172 [label="PRINT | PRINT"]
+	Node154 -> Node172
+	Node173 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node172 -> Node173
+	Node174 [label="temporal | $t1"]
+	Node173 -> Node174
+	Node175 [label="L_ACCESOS | L_ACCESOS"]
+	Node173 -> Node175
+	Node176 [label="ACCESO | ACCESO"]
+	Node175 -> Node176
+	Node177 [label="temporal | $t2"]
+	Node176 -> Node177
+	Node178 [label="ACCESO | ACCESO"]
+	Node175 -> Node178
+	Node179 [label="string2 | direccion"]
+	Node178 -> Node179
+	Node180 [label="PRINT | PRINT"]
+	Node154 -> Node180
+	Node181 [label="string2 | ,"]
+	Node180 -> Node181
+	Node182 [label="PRINT | PRINT"]
+	Node154 -> Node182
+	Node183 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node182 -> Node183
+	Node184 [label="temporal | $t1"]
+	Node183 -> Node184
+	Node185 [label="L_ACCESOS | L_ACCESOS"]
+	Node183 -> Node185
+	Node186 [label="ACCESO | ACCESO"]
+	Node185 -> Node186
+	Node187 [label="temporal | $t2"]
+	Node186 -> Node187
+	Node188 [label="ACCESO | ACCESO"]
+	Node185 -> Node188
+	Node189 [label="string2 | telefono"]
+	Node188 -> Node189
+	Node190 [label="ACCESO | ACCESO"]
+	Node185 -> Node190
+	Node191 [label="entero | 0"]
+	Node190 -> Node191
+	Node192 [label="PRINT | PRINT"]
+	Node154 -> Node192
+	Node193 [label="string2 | \n"]
+	Node192 -> Node193
+	Node194 [label="ASIGNACION | ASIGNACION"]
+	Node154 -> Node194
+	Node195 [label="temporal | $t2"]
+	Node194 -> Node195
+	Node196 [label="EXP | EXP"]
+	Node194 -> Node196
+	Node197 [label="temporal | $t2"]
+	Node196 -> Node197
+	Node198 [label="op | +"]
+	Node196 -> Node198
+	Node199 [label="entero | 1"]
+	Node196 -> Node199
+	Node200 [label="GOTO | GOTO"]
+	Node154 -> Node200
+	Node201 [label="iden | while0"]
+	Node200 -> Node201
+	Node202 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node202
+	Node203 [label="iden | end0"]
+	Node202 -> Node203
+	Node204 [label="SENTENCIAS | SENTENCIAS"]
+	Node202 -> Node204
+	Node205 [label="ASIGNACION | ASIGNACION"]
+	Node204 -> Node205
+	Node206 [label="temporal | $t3"]
+	Node205 -> Node206
+	Node207 [label="EXP | EXP"]
+	Node205 -> Node207
+	Node208 [label="ARRAY | ARRAY"]
+	Node207 -> Node208
+	Node209 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node209
+	Node210 [label="temporal | $t3"]
+	Node209 -> Node210
+	Node211 [label="L_ACCESOS | L_ACCESOS"]
+	Node209 -> Node211
+	Node212 [label="ACCESO | ACCESO"]
+	Node211 -> Node212
+	Node213 [label="entero | 0"]
+	Node212 -> Node213
+	Node214 [label="entero | 0"]
+	Node209 -> Node214
+	Node215 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node215
+	Node216 [label="temporal | $t3"]
+	Node215 -> Node216
+	Node217 [label="L_ACCESOS | L_ACCESOS"]
+	Node215 -> Node217
+	Node218 [label="ACCESO | ACCESO"]
+	Node217 -> Node218
+	Node219 [label="entero | 1"]
+	Node218 -> Node219
+	Node220 [label="entero | 1"]
+	Node215 -> Node220
+	Node221 [label="PRINT | PRINT"]
+	Node204 -> Node221
+	Node222 [label="temporal | $t3"]
+	Node221 -> Node222
+	Node223 [label="PRINT | PRINT"]
+	Node204 -> Node223
+	Node224 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node223 -> Node224
+	Node225 [label="temporal | $t3"]
+	Node224 -> Node225
+	Node226 [label="L_ACCESOS | L_ACCESOS"]
+	Node224 -> Node226
+	Node227 [label="ACCESO | ACCESO"]
+	Node226 -> Node227
+	Node228 [label="entero | 0"]
+	Node227 -> Node228
+	Node229 [label="PRINT | PRINT"]
+	Node204 -> Node229
+	Node230 [label="string2 | \n"]
+	Node229 -> Node230
+	Node231 [label="PRINT | PRINT"]
+	Node204 -> Node231
+	Node232 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node231 -> Node232
+	Node233 [label="temporal | $t3"]
+	Node232 -> Node233
+	Node234 [label="L_ACCESOS | L_ACCESOS"]
+	Node232 -> Node234
+	Node235 [label="ACCESO | ACCESO"]
+	Node234 -> Node235
+	Node236 [label="entero | 1"]
+	Node235 -> Node236
+	Node237 [label="PRINT | PRINT"]
+	Node204 -> Node237
+	Node238 [label="string2 | \n"]
+	Node237 -> Node238
+	Node239 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node239
+	Node240 [label="temporal | $t3"]
+	Node239 -> Node240
+	Node241 [label="L_ACCESOS | L_ACCESOS"]
+	Node239 -> Node241
+	Node242 [label="ACCESO | ACCESO"]
+	Node241 -> Node242
+	Node243 [label="entero | 1"]
+	Node242 -> Node243
+	Node244 [label="ACCESO | ACCESO"]
+	Node241 -> Node244
+	Node245 [label="entero | 0"]
+	Node244 -> Node245
+	Node246 [label="entero | 10"]
+	Node239 -> Node246
+	Node247 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node247
+	Node248 [label="temporal | $t3"]
+	Node247 -> Node248
+	Node249 [label="L_ACCESOS | L_ACCESOS"]
+	Node247 -> Node249
+	Node250 [label="ACCESO | ACCESO"]
+	Node249 -> Node250
+	Node251 [label="entero | 2"]
+	Node250 -> Node251
+	Node252 [label="ACCESO | ACCESO"]
+	Node249 -> Node252
+	Node253 [label="entero | 0"]
+	Node252 -> Node253
+	Node254 [label="entero | 20"]
+	Node247 -> Node254
+	Node255 [label="PRINT | PRINT"]
+	Node204 -> Node255
+	Node256 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node255 -> Node256
+	Node257 [label="temporal | $t3"]
+	Node256 -> Node257
+	Node258 [label="L_ACCESOS | L_ACCESOS"]
+	Node256 -> Node258
+	Node259 [label="ACCESO | ACCESO"]
+	Node258 -> Node259
+	Node260 [label="entero | 2"]
+	Node259 -> Node260
+	Node261 [label="ACCESO | ACCESO"]
+	Node258 -> Node261
+	Node262 [label="entero | 0"]
+	Node261 -> Node262
+	Node263 [label="PRINT | PRINT"]
+	Node204 -> Node263
+	Node264 [label="string2 | \n"]
+	Node263 -> Node264
+	Node265 [label="PRINT | PRINT"]
+	Node204 -> Node265
+	Node266 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node265 -> Node266
+	Node267 [label="temporal | $t3"]
+	Node266 -> Node267
+	Node268 [label="L_ACCESOS | L_ACCESOS"]
+	Node266 -> Node268
+	Node269 [label="ACCESO | ACCESO"]
+	Node268 -> Node269
+	Node270 [label="entero | 1"]
+	Node269 -> Node270
+	Node271 [label="ACCESO | ACCESO"]
+	Node268 -> Node271
+	Node272 [label="entero | 3"]
+	Node271 -> Node272
+	Node273 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node273
+	Node274 [label="temporal | $t3"]
+	Node273 -> Node274
+	Node275 [label="L_ACCESOS | L_ACCESOS"]
+	Node273 -> Node275
+	Node276 [label="ACCESO | ACCESO"]
+	Node275 -> Node276
+	Node277 [label="string2 | nombre"]
+	Node276 -> Node277
+	Node278 [label="string2 | Carla"]
+	Node273 -> Node278
+	Node279 [label="PRINT | PRINT"]
+	Node204 -> Node279
+	Node280 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node279 -> Node280
+	Node281 [label="temporal | $t3"]
+	Node280 -> Node281
+	Node282 [label="L_ACCESOS | L_ACCESOS"]
+	Node280 -> Node282
+	Node283 [label="ACCESO | ACCESO"]
+	Node282 -> Node283
+	Node284 [label="string2 | nombre"]
+	Node283 -> Node284
+	Node285 [label="PRINT | PRINT"]
+	Node204 -> Node285
+	Node286 [label="string2 | \n"]
+	Node285 -> Node286
+	Node287 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node287
+	Node288 [label="temporal | $t3"]
+	Node287 -> Node288
+	Node289 [label="L_ACCESOS | L_ACCESOS"]
+	Node287 -> Node289
+	Node290 [label="ACCESO | ACCESO"]
+	Node289 -> Node290
+	Node291 [label="string2 | nombre"]
+	Node290 -> Node291
+	Node292 [label="ACCESO | ACCESO"]
+	Node289 -> Node292
+	Node293 [label="entero | 4"]
+	Node292 -> Node293
+	Node294 [label="string2 | o"]
+	Node287 -> Node294
+	Node295 [label="PRINT | PRINT"]
+	Node204 -> Node295
+	Node296 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node295 -> Node296
+	Node297 [label="temporal | $t3"]
+	Node296 -> Node297
+	Node298 [label="L_ACCESOS | L_ACCESOS"]
+	Node296 -> Node298
+	Node299 [label="ACCESO | ACCESO"]
+	Node298 -> Node299
+	Node300 [label="string2 | nombre"]
+	Node299 -> Node300
+	Node301 [label="PRINT | PRINT"]
+	Node204 -> Node301
+	Node302 [label="string2 | \n"]
+	Node301 -> Node302
+	Node303 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node303
+	Node304 [label="temporal | $t3"]
+	Node303 -> Node304
+	Node305 [label="L_ACCESOS | L_ACCESOS"]
+	Node303 -> Node305
+	Node306 [label="ACCESO | ACCESO"]
+	Node305 -> Node306
+	Node307 [label="string2 | nombre"]
+	Node306 -> Node307
+	Node308 [label="ACCESO | ACCESO"]
+	Node305 -> Node308
+	Node309 [label="entero | 5"]
+	Node308 -> Node309
+	Node310 [label="string2 | s"]
+	Node303 -> Node310
+	Node311 [label="PRINT | PRINT"]
+	Node204 -> Node311
+	Node312 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node311 -> Node312
+	Node313 [label="temporal | $t3"]
+	Node312 -> Node313
+	Node314 [label="L_ACCESOS | L_ACCESOS"]
+	Node312 -> Node314
+	Node315 [label="ACCESO | ACCESO"]
+	Node314 -> Node315
+	Node316 [label="string2 | nombre"]
+	Node315 -> Node316
+	Node317 [label="PRINT | PRINT"]
+	Node204 -> Node317
+	Node318 [label="string2 | \n"]
+	Node317 -> Node318
+	Node319 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node319
+	Node320 [label="temporal | $t3"]
+	Node319 -> Node320
+	Node321 [label="L_ACCESOS | L_ACCESOS"]
+	Node319 -> Node321
+	Node322 [label="ACCESO | ACCESO"]
+	Node321 -> Node322
+	Node323 [label="string2 | nombre"]
+	Node322 -> Node323
+	Node324 [label="ACCESO | ACCESO"]
+	Node321 -> Node324
+	Node325 [label="entero | 7"]
+	Node324 -> Node325
+	Node326 [label="string2 | s"]
+	Node319 -> Node326
+	Node327 [label="PRINT | PRINT"]
+	Node204 -> Node327
+	Node328 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node327 -> Node328
+	Node329 [label="temporal | $t3"]
+	Node328 -> Node329
+	Node330 [label="L_ACCESOS | L_ACCESOS"]
+	Node328 -> Node330
+	Node331 [label="ACCESO | ACCESO"]
+	Node330 -> Node331
+	Node332 [label="string2 | nombre"]
+	Node331 -> Node332
+	Node333 [label="PRINT | PRINT"]
+	Node204 -> Node333
+	Node334 [label="string2 | \n"]
+	Node333 -> Node334
+	Node335 [label="ASIGNACION | ASIGNACION"]
+	Node204 -> Node335
+	Node336 [label="pila | $s0"]
+	Node335 -> Node336
+	Node337 [label="EXP | EXP"]
+	Node335 -> Node337
+	Node338 [label="ARRAY | ARRAY"]
+	Node337 -> Node338
+	Node339 [label="ASIGNACION | ASIGNACION"]
+	Node204 -> Node339
+	Node340 [label="puntero | $sp"]
+	Node339 -> Node340
+	Node341 [label="EXP | EXP"]
+	Node339 -> Node341
+	Node342 [label="op | -"]
+	Node341 -> Node342
+	Node343 [label="entero | 1"]
+	Node341 -> Node343
+	Node344 [label="ASIGNACION | ASIGNACION"]
+	Node204 -> Node344
+	Node345 [label="parametro | $a0"]
+	Node344 -> Node345
+	Node346 [label="entero | 2"]
+	Node344 -> Node346
+	Node347 [label="ASIGNACION | ASIGNACION"]
+	Node204 -> Node347
+	Node348 [label="parametro | $a1"]
+	Node347 -> Node348
+	Node349 [label="entero | 3"]
+	Node347 -> Node349
+	Node350 [label="ASIGNACION | ASIGNACION"]
+	Node204 -> Node350
+	Node351 [label="puntero | $sp"]
+	Node350 -> Node351
+	Node352 [label="EXP | EXP"]
+	Node350 -> Node352
+	Node353 [label="puntero | $sp"]
+	Node352 -> Node353
+	Node354 [label="op | +"]
+	Node352 -> Node354
+	Node355 [label="entero | 1"]
+	Node352 -> Node355
+	Node356 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node204 -> Node356
+	Node357 [label="pila | $s0"]
+	Node356 -> Node357
+	Node358 [label="L_ACCESOS | L_ACCESOS"]
+	Node356 -> Node358
+	Node359 [label="ACCESO | ACCESO"]
+	Node358 -> Node359
+	Node360 [label="puntero | $sp"]
+	Node359 -> Node360
+	Node361 [label="parametro | $a0"]
+	Node356 -> Node361
+	Node362 [label="GOTO | GOTO"]
+	Node204 -> Node362
+	Node363 [label="iden | ack"]
+	Node362 -> Node363
+	Node364 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node364
+	Node365 [label="iden | ret0"]
+	Node364 -> Node365
+	Node366 [label="SENTENCIAS | SENTENCIAS"]
+	Node364 -> Node366
+	Node367 [label="PRINT | PRINT"]
+	Node366 -> Node367
+	Node368 [label="devfunc | $v0"]
+	Node367 -> Node368
+	Node369 [label="EXIT | EXIT"]
+	Node366 -> Node369
+	Node370 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node370
+	Node371 [label="iden | ack"]
+	Node370 -> Node371
+	Node372 [label="SENTENCIAS | SENTENCIAS"]
+	Node370 -> Node372
+	Node373 [label="IF | IF"]
+	Node372 -> Node373
+	Node374 [label="EXP | EXP"]
+	Node373 -> Node374
+	Node375 [label="puntero | $sp"]
+	Node374 -> Node375
+	Node376 [label="op | <"]
+	Node374 -> Node376
+	Node377 [label="entero | 0"]
+	Node374 -> Node377
+	Node378 [label="GOTO | GOTO"]
+	Node373 -> Node378
+	Node379 [label="iden | ret3"]
+	Node378 -> Node379
+	Node380 [label="ASIGNACION | ASIGNACION"]
+	Node372 -> Node380
+	Node381 [label="parametro | $a0"]
+	Node380 -> Node381
+	Node382 [label="ACCESO_ARR | ACCESO_ARR"]
+	Node380 -> Node382
+	Node383 [label="pila | $s0"]
+	Node382 -> Node383
+	Node384 [label="L_ACCESOS | L_ACCESOS"]
+	Node382 -> Node384
+	Node385 [label="ACCESO | ACCESO"]
+	Node384 -> Node385
+	Node386 [label="puntero | $sp"]
+	Node385 -> Node386
+	Node387 [label="ASIGNACION | ASIGNACION"]
+	Node372 -> Node387
+	Node388 [label="puntero | $sp"]
+	Node387 -> Node388
+	Node389 [label="EXP | EXP"]
+	Node387 -> Node389
+	Node390 [label="puntero | $sp"]
+	Node389 -> Node390
+	Node391 [label="op | -"]
+	Node389 -> Node391
+	Node392 [label="entero | 1"]
+	Node389 -> Node392
+	Node393 [label="IF | IF"]
+	Node372 -> Node393
+	Node394 [label="EXP | EXP"]
+	Node393 -> Node394
+	Node395 [label="parametro | $a0"]
+	Node394 -> Node395
+	Node396 [label="op | !="]
+	Node394 -> Node396
+	Node397 [label="entero | 0"]
+	Node394 -> Node397
+	Node398 [label="GOTO | GOTO"]
+	Node393 -> Node398
+	Node399 [label="iden | ret1"]
+	Node398 -> Node399
+	Node400 [label="ASIGNACION | ASIGNACION"]
+	Node372 -> Node400
+	Node401 [label="temporal | $t4"]
+	Node400 -> Node401
+	Node402 [label="EXP | EXP"]
+	Node400 -> Node402
+	Node403 [label="parametro | $a0"]
+	Node402 -> Node403
+	Node404 [label="op | +"]
+	Node402 -> Node404
+	Node405 [label="entero | 1"]
+	Node402 -> Node405
+	Node406 [label="ASIGNACION | ASIGNACION"]
+	Node372 -> Node406
+	Node407 [label="parametro | $a1"]
+	Node406 -> Node407
+	Node408 [label="EXP | EXP"]
+	Node406 -> Node408
+	Node409 [label="parametro | $a1"]
+	Node408 -> Node409
+	Node410 [label="op | +"]
+	Node408 -> Node410
+	Node411 [label="temporal | $t4"]
+	Node408 -> Node411
+	Node412 [label="GOTO | GOTO"]
+	Node372 -> Node412
+	Node413 [label="iden | ack"]
+	Node412 -> Node413
+	Node414 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node414
+	Node415 [label="iden | ret1"]
+	Node414 -> Node415
+	Node416 [label="SENTENCIAS | SENTENCIAS"]
+	Node414 -> Node416
+	Node417 [label="IF | IF"]
+	Node416 -> Node417
+	Node418 [label="EXP | EXP"]
+	Node417 -> Node418
+	Node419 [label="parametro | $a1"]
+	Node418 -> Node419
+	Node420 [label="op | !="]
+	Node418 -> Node420
+	Node421 [label="entero | 0"]
+	Node418 -> Node421
+	Node422 [label="GOTO | GOTO"]
+	Node417 -> Node422
+	Node423 [label="iden | ret2"]
+	Node422 -> Node423
+	Node424 [label="ASIGNACION | ASIGNACION"]
+	Node416 -> Node424
+	Node425 [label="parametro | $a1"]
+	Node424 -> Node425
+	Node426 [label="EXP | EXP"]
+	Node424 -> Node426
+	Node427 [label="parametro | $a1"]
+	Node426 -> Node427
+	Node428 [label="op | +"]
+	Node426 -> Node428
+	Node429 [label="entero | 1"]
+	Node426 -> Node429
+	Node430 [label="ASIGNACION | ASIGNACION"]
+	Node416 -> Node430
+	Node431 [label="parametro | $a0"]
+	Node430 -> Node431
+	Node432 [label="EXP | EXP"]
+	Node430 -> Node432
+	Node433 [label="parametro | $a0"]
+	Node432 -> Node433
+	Node434 [label="op | -"]
+	Node432 -> Node434
+	Node435 [label="entero | 1"]
+	Node432 -> Node435
+	Node436 [label="ASIGNACION | ASIGNACION"]
+	Node416 -> Node436
+	Node437 [label="puntero | $sp"]
+	Node436 -> Node437
+	Node438 [label="EXP | EXP"]
+	Node436 -> Node438
+	Node439 [label="puntero | $sp"]
+	Node438 -> Node439
+	Node440 [label="op | +"]
+	Node438 -> Node440
+	Node441 [label="entero | 1"]
+	Node438 -> Node441
+	Node442 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node416 -> Node442
+	Node443 [label="pila | $s0"]
+	Node442 -> Node443
+	Node444 [label="L_ACCESOS | L_ACCESOS"]
+	Node442 -> Node444
+	Node445 [label="ACCESO | ACCESO"]
+	Node444 -> Node445
+	Node446 [label="puntero | $sp"]
+	Node445 -> Node446
+	Node447 [label="parametro | $a0"]
+	Node442 -> Node447
+	Node448 [label="GOTO | GOTO"]
+	Node416 -> Node448
+	Node449 [label="iden | ack"]
+	Node448 -> Node449
+	Node450 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node450
+	Node451 [label="iden | ret2"]
+	Node450 -> Node451
+	Node452 [label="SENTENCIAS | SENTENCIAS"]
+	Node450 -> Node452
+	Node453 [label="ASIGNACION | ASIGNACION"]
+	Node452 -> Node453
+	Node454 [label="parametro | $a0"]
+	Node453 -> Node454
+	Node455 [label="EXP | EXP"]
+	Node453 -> Node455
+	Node456 [label="parametro | $a0"]
+	Node455 -> Node456
+	Node457 [label="op | -"]
+	Node455 -> Node457
+	Node458 [label="entero | 1"]
+	Node455 -> Node458
+	Node459 [label="ASIGNACION | ASIGNACION"]
+	Node452 -> Node459
+	Node460 [label="puntero | $sp"]
+	Node459 -> Node460
+	Node461 [label="EXP | EXP"]
+	Node459 -> Node461
+	Node462 [label="puntero | $sp"]
+	Node461 -> Node462
+	Node463 [label="op | +"]
+	Node461 -> Node463
+	Node464 [label="entero | 1"]
+	Node461 -> Node464
+	Node465 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node452 -> Node465
+	Node466 [label="pila | $s0"]
+	Node465 -> Node466
+	Node467 [label="L_ACCESOS | L_ACCESOS"]
+	Node465 -> Node467
+	Node468 [label="ACCESO | ACCESO"]
+	Node467 -> Node468
+	Node469 [label="puntero | $sp"]
+	Node468 -> Node469
+	Node470 [label="parametro | $a0"]
+	Node465 -> Node470
+	Node471 [label="ASIGNACION | ASIGNACION"]
+	Node452 -> Node471
+	Node472 [label="parametro | $a0"]
+	Node471 -> Node472
+	Node473 [label="EXP | EXP"]
+	Node471 -> Node473
+	Node474 [label="parametro | $a0"]
+	Node473 -> Node474
+	Node475 [label="op | +"]
+	Node473 -> Node475
+	Node476 [label="entero | 1"]
+	Node473 -> Node476
+	Node477 [label="ASIGNACION | ASIGNACION"]
+	Node452 -> Node477
+	Node478 [label="puntero | $sp"]
+	Node477 -> Node478
+	Node479 [label="EXP | EXP"]
+	Node477 -> Node479
+	Node480 [label="puntero | $sp"]
+	Node479 -> Node480
+	Node481 [label="op | +"]
+	Node479 -> Node481
+	Node482 [label="entero | 1"]
+	Node479 -> Node482
+	Node483 [label="ASIGNACION_ARR | ASIGNACION_ARR"]
+	Node452 -> Node483
+	Node484 [label="pila | $s0"]
+	Node483 -> Node484
+	Node485 [label="L_ACCESOS | L_ACCESOS"]
+	Node483 -> Node485
+	Node486 [label="ACCESO | ACCESO"]
+	Node485 -> Node486
+	Node487 [label="puntero | $sp"]
+	Node486 -> Node487
+	Node488 [label="parametro | $a0"]
+	Node483 -> Node488
+	Node489 [label="ASIGNACION | ASIGNACION"]
+	Node452 -> Node489
+	Node490 [label="parametro | $a1"]
+	Node489 -> Node490
+	Node491 [label="EXP | EXP"]
+	Node489 -> Node491
+	Node492 [label="parametro | $a1"]
+	Node491 -> Node492
+	Node493 [label="op | -"]
+	Node491 -> Node493
+	Node494 [label="entero | 1"]
+	Node491 -> Node494
+	Node495 [label="GOTO | GOTO"]
+	Node452 -> Node495
+	Node496 [label="iden | ack"]
+	Node495 -> Node496
+	Node497 [label="ETIQUETA | ETIQUETA"]
+	Node1 -> Node497
+	Node498 [label="iden | ret3"]
+	Node497 -> Node498
+	Node499 [label="SENTENCIAS | SENTENCIAS"]
+	Node497 -> Node499
+	Node500 [label="ASIGNACION | ASIGNACION"]
+	Node499 -> Node500
+	Node501 [label="devfunc | $v0"]
+	Node500 -> Node501
+	Node502 [label="parametro | $a1"]
+	Node500 -> Node502
+	Node503 [label="GOTO | GOTO"]
+	Node499 -> Node503
+	Node504 [label="iden | ret0"]
+	Node503 -> Node504
+}

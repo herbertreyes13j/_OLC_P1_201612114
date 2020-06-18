@@ -1,9 +1,9 @@
+import N_Error as err
 reservadas = {
     'goto':'t_goto',
     'unset':'t_unset',
     'print':'t_print',
     'exit':'t_exit',
-    'unset':'t_unset',
     'read':'t_read',
     'int':'t_int',
     'float':'t_float',
@@ -164,6 +164,8 @@ def find_column(input, token):
 
     
 def t_error(t):
+    errores.insertar(err.N_Error("Lexico","Caracter ilegal '%s'"%t.value[0],
+                                 t.lineno,find_column(input,t)))
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
@@ -179,6 +181,11 @@ def p_inicio(t):
     's         : etiquetas'
     t[0] = nodo.AST_node('RAIZ','RAIZ',0,0)
     t[0].addChilds(t[1])
+
+def p_inicio2(t):
+    's         : '
+    t[0] = nodo.AST_node('RAIZ','RAIZ',0,0)
+    #t[0].addChilds(t[1])
 
 
 def p_etiquetas_etiquetas(t):
@@ -222,6 +229,10 @@ def p_sentencia(t):
                   | as_puntero
                   | IF'''
     t[0]=t[1]
+
+def p_sentencia2(t):
+    'sentencias : '
+    t[0]=nodo.AST_node('SENTENCIAS','SENTENCIAS',0,0)
 
 def p_asignacion_arreglo(t):
     'ASIGNACION_ARR : asignado L_ACCESOS asigna exp PTCOMA'
@@ -429,8 +440,19 @@ def p_array(t):
     t[0].addChilds(aux)
 
 def p_error(t):
-    print(t)
-    print("Error sintáctico en '%s'" % t.value)
+    if not t:
+        errores.insertar(err.N_Error("SINTACTICO",'Error sintactico irrecuperable',
+                                   t.lineno,find_column(input,t)))
+        return
+
+    errores.insertar(err.N_Error("Sintactico",str(t.value),
+                                     t.lineno,find_column(input,t)))
+    while True:
+        tok = parser.token()
+        if not tok or tok.type == 'PTCOMA':
+            break
+    parser.restart()
+
 
 def t_eof(t):
      # Get more input (Example)
@@ -443,9 +465,12 @@ def t_eof(t):
 import ply.yacc as yacc
 
 
-def parse(input1):
-    global input 
+def parse(input1,errores1):
+    global input
+    global errores
+    errores=errores1
     input= input1
+    global parser
     parser = yacc.yacc()
     parser.errok()
     return parser.parse(input,tracking=True,lexer=lexer)

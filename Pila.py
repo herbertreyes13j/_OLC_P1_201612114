@@ -9,6 +9,13 @@ class Pila:
         self.inicio=None
         self.fin=None
 
+    def obtenerreporte(self):
+        muestra=self.inicio
+        tupla=[]
+        while muestra is not None:
+            tupla.append((muestra.nombre,muestra.tipo,str(muestra.valor),muestra.declarada,muestra.rol))
+            muestra=muestra.siguiente
+        return tupla
     def existe(self,nombre):
         if(nombre=="$$" or nombre=="$"): return False
         actual = self.fin

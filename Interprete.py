@@ -54,9 +54,7 @@ class Interprete:
         print(self.metodos)
         self.actual = self.metodos.inicio
         if self.actual == None:
-            error=N_Error.N_Error("Semantico","No hay etiquetas",0,0)
-            self.errores.insertar(error)
-            self.codigo+=error.totext()
+            return
         else:
             if self.actual.nombre.lower() != 'main':
                 error=N_Error.N_Error("Semantico", "Debe declarar metodo principal primero", 0, 0)
@@ -94,7 +92,7 @@ class Interprete:
                 Resultado = opera.ejecutar(raiz.childs[1])
                 s = self.pila.obtener(nombre)
                 if s == None:
-                    s = sim.Simbolo(nombre, Resultado.tipo, Resultado.valor, tipo)
+                    s = sim.Simbolo(nombre, Resultado.tipo, Resultado.valor, tipo,self.actual.nombre)
                     self.pila.push(s)
                 else:
                     s.tipo = Resultado.tipo
@@ -142,7 +140,7 @@ class Interprete:
                 cuenta = 1
                 Indice = None
                 if (s == None):
-                    s = sim.Simbolo(nombre, 'array', {}, tipo)
+                    s = sim.Simbolo(nombre, 'array', {}, tipo,self.actual.nombre)
                     self.pila.push(s)
                 actual = s.valor
                 auxiliar=None
@@ -188,7 +186,6 @@ class Interprete:
                     print(actual)
                 else:
                     actual[Indice.valor] = Resultado.valor
-                print('hola')
         else:
             return
 

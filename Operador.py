@@ -2,6 +2,8 @@ import Interprete as inter
 import Resultado as res
 import Simbolo as sim
 import N_Error as N_Error
+from tkinter import *
+from tkinter import simpledialog
 class Operador:
     def __init__(self,interprete):
         self.interprete=interprete
@@ -37,11 +39,57 @@ class Operador:
                         temporal.valor=float(temporal.valor)*-1
                     else:
                         print('Error')
+                        self.interprete.errores.insertar(N_Error.N_Error('Semantico','Operacion Invalida para menos unario',
+                                                                         raiz.childs[0].fila,raiz.childs[0].columna))
                         return res.Resultado('error','')
                     return temporal
+                elif raiz.childs[0].value=='!':
+                    Resultado=self.ejecutar(raiz.childs[1])
+                    if Resultado.tipo=='int' or Resultado.tipo=='float':
+                        Resultado.valor=not float(Resultado.valor)
+
+                        if Resultado.valor:
+                            Resultado.valor=1
+                        else:
+                            Resultado.valor=0
+                        Resultado.tipo='int'
+                        return Resultado
+                    else:
+                        print('Error')
+                        self.interprete.errores.insertar(
+                            N_Error.N_Error('Semantico', 'Operacion Invalida para not',
+                                            raiz.childs[0].fila, raiz.childs[0].columna))
+                        return res.Resultado('error', '')
+                elif raiz.childs[0].value=='~':
+                    Resultado=self.ejecutar(raiz.childs[1])
+                    if(Resultado.tipo=='float'):
+                        Resultado.tipo='float'
+                        Resultado.valor=int(Resultado.valor)
+                    if Resultado.tipo=='int':
+                        Resultado.valor=~int(Resultado.valor)
+                        Resultado.tipo='int'
+                        return Resultado
+                    else:
+                        print('Error')
+                        self.interprete.errores.insertar(
+                            N_Error.N_Error('Semantico', 'Operacion Invalida para not',
+                                            raiz.childs[0].fila, raiz.childs[0].columna))
+                        return res.Resultado('error', '')
+
             else:
                 return self.ejecutar(raiz.childs[0])
 
+        elif raiz.tag=='ABS':
+            Resultado = self.ejecutar(raiz.childs[0])
+            if Resultado.tipo=='int' or Resultado.tipo=='float':
+                Resultado.valor=abs(Resultado.valor)
+                return  Resultado
+            else:
+                print('Error')
+                self.interprete.errores.insertar(
+                    N_Error.N_Error('Semantico', 'No es valido tipo: '+Resultado.tipo+' para abs()',
+                                    raiz.childs[0].fila, raiz.childs[0].columna))
+                return res.Resultado('error', '')
         elif raiz.tag=='puntero' or raiz.tag=="temporal" or raiz.tag=='direccion' or raiz.tag=='parametro' or raiz.tag=='devfunc' or raiz.tag=='pila':
             s = self.interprete.pila.obtener(raiz.value)
             if(s!=None):
@@ -55,6 +103,23 @@ class Operador:
             return res.Resultado("float",raiz.value)
         elif raiz.tag=='string' or raiz.tag=='string2':
             return res.Resultado("string",raiz.value)
+
+        elif raiz.tag=='READ':
+            window = Tk()
+            window.geometry('0x0')
+            window.withdraw()
+            answer = simpledialog.askstring("Input", "Ingresa valor",
+                                            parent=window)
+
+            if answer.isnumeric():
+                return res.Resultado("int",int(answer))
+            else:
+                try:
+                    float(answer)
+                    return res.Resultado("float",float(answer))
+                except ValueError:
+                    return res.Resultado("string",answer)
+
         elif raiz.tag=='CASTEO':
             tipo=raiz.childs[0].value.lower()
             Resultado = self.ejecutar(raiz.childs[1])
@@ -153,7 +218,7 @@ class Operador:
             else:
                 return  res.Resultado('error','')
         else:
-            return res.Resultado("d","")
+            return res.Resultado("error","")
 
     def suma(self,Resultado1,Resultado2,fila,columna):
         if(Resultado1.tipo=="error" or Resultado2.tipo=="error"): return res.Resultado("error","")
@@ -175,7 +240,7 @@ class Operador:
             return Resultado
         else:
             Resultado.tipo="error"
-            self.interprete.errores().insertar(N_Error.N_Error("Semantico","No es posible suma entre "+tipo1+' '+tipo2,fila,columna))
+            self.interprete.errores.insertar(N_Error.N_Error("Semantico","No es posible suma entre "+tipo1+' '+tipo2,fila,columna))
             return Resultado 
 
     def aritmetico(self,Resultado1,Resultado2,fila,columna,op):
@@ -200,7 +265,7 @@ class Operador:
             return Resultado
         else:
             Resultado.tipo="error"
-            self.interprete.errrores().insertar(N_Error.N_Error("Semantico","No es posible operacion entre "+tipo1+' '+op+' '+tipo2,fila,columna))
+            self.interprete.errores.insertar(N_Error.N_Error("Semantico","No es posible operacion entre "+tipo1+' '+op+' '+tipo2,fila,columna))
             return Resultado 
     
     def division(self,Resultado1,Resultado2,fila,columna):
@@ -318,9 +383,15 @@ class Operador:
     def bitabit(self,Resultado1,Resultado2,fila,columna,op):
         if(Resultado1.tipo=="error" or Resultado2.tipo=="error"): return res.Resultado("error","")
         Resultado=res.Resultado("","")
+
+        if Resultado1.tipo=="float":
+            Resultado1.tipo='int'
+            Resultado1.valor=int(Resultado1.valor)
+        if Resultado2.tipo=="float":
+            Resultado2.tipo='int'
+            Resultado2.valor=int(Resultado2.valor)
         tipo1=Resultado1.tipo
         tipo2=Resultado2.tipo
-
         if tipo1=="int"  and tipo2=="int":
             resu=0
             if op=='&':
